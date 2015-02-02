@@ -1,0 +1,6 @@
+require './app'
+
+use ActiveRecord::ConnectionAdapters::ConnectionManagement
+use Gris::Middleware::AppMonitor
+
+run Application::Service.instance
