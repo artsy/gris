@@ -1,0 +1,70 @@
+require 'spec_helper'
+
+describe <%= name.classify.pluralize %>Endpoint do
+  include Rack::Test::Methods
+  include_context 'with a running app'
+
+  context '<%= name.tableize %>' do
+    before(:each) do
+      20.times do
+        Fabricate(:<%= name.underscore %>)
+      end
+    end
+
+    it 'returns 10 <%= name.tableize %> by default' do
+      get '/<%= name.tableize %>'
+      expect(response_code).to eq 200
+      expect_embedded_results_count_of 10, <%= name.classify %>
+    end
+
+    it 'returns 2 <%= name.tableize %>' do
+      get '/<%= name.tableize %>?size=2'
+      expect(response_code).to eq 200
+      expect_embedded_results_count_of 2, <%= name.classify %>
+    end
+
+    it 'returns pagination' do
+      get '/<%= name.tableize %>?size=2&page=2'
+      expect(response_code).to eq 200
+      expect(link_to_next[:href]).to eq 'http://example.org/<%= name.tableize %>?page=3&size=2'
+      expect(link_to_previous[:href]).to eq 'http://example.org/<%= name.tableize %>?page=1&size=2'
+      expect(link_to_self[:href]).to eq 'http://example.org/<%= name.tableize %>?page=2&size=2'
+    end
+
+    it 'returns all unique ids' do
+      get '/<%= name.tableize %>'
+      expect(response_code).to eq 200
+      expect(embedded_results(<%= name.classify %>).map { |s| s[:id] }.uniq.count).to eq 10
+    end
+  end
+
+  context '<%= name.underscore %>' do
+    let(:<%= name.underscore %>1) { Fabricate(:<%= name.underscore %>) }
+
+    it 'creates a <%= name.underscore %>' do
+      post '/<%= name.tableize %>', <%= name.underscore %>: { replace: 'REPLACE ME' }
+      expect(response_code).to eq 201
+      expect(result[:id]).to_not be_blank
+    end
+
+    it 'returns a <%= name.underscore %>' do
+      get "/<%= name.tableize %>/#{<%= name.underscore %>1.id}"
+      expect(response_code).to eq 200
+      expect(result[:id]).to eq <%= name.underscore %>1.id
+      expect(link_to_self[:href]).to eq "http://example.org/<%= name.tableize %>/#{<%= name.underscore %>1.id}"
+    end
+
+    it 'updates a <%= name.underscore %>' do
+      patch "/<%= name.tableize %>/#{<%= name.underscore %>1.id}", <%= name.underscore %>: { replace: 'REPLACE ME' }
+      expect(response_code).to eq 200
+      expect(result[:id]).to eq <%= name.underscore %>1.id
+    end
+
+    it 'deletes a <%= name.underscore %>' do
+      expect_any_instance_of(<%= name.classify %>).to receive(:destroy)
+      delete "/<%= name.tableize %>/#{<%= name.underscore %>1.id}"
+      expect(response_code).to eq 200
+      expect(result[:id]).to eq <%= name.underscore %>1.id
+    end
+  end
+end

@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'gris/cli'
+
+Gris::CLI::Base.start(ARGV)
