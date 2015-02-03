@@ -1,0 +1,10 @@
+module <%= name.classify %>Presenter
+  include Gris::Presenter
+
+  property :id, writeable: false, type: String, desc: '<%= name.classify %> unique ID.'
+
+  link :self do |opts|
+    request = Grape::Request.new(opts[:env])
+    "#{request.base_url}/<%= name.tableize %>/#{id}"
+  end
+end

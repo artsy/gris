@@ -1,0 +1,18 @@
+AllCops:
+  Exclude:
+    - db/schema.rb
+
+Documentation:
+  Enabled: false
+
+Encoding:
+  Enabled: false
+
+HandleExceptions:
+  Enabled: false
+
+LineLength:
+  Max: 120
+
+NumericLiterals:
+  Enabled: false
