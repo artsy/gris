@@ -1,0 +1,2 @@
+Fabricator(:<%= name.underscore %>) do
+end

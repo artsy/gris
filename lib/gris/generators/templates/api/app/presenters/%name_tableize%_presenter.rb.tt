@@ -1,0 +1,5 @@
+module <%= name.classify.pluralize %>Presenter
+  include Gris::PaginatedPresenter
+
+  collection :to_a, extend: <%= name.classify %>Presenter, as: :<%= name.tableize %>, embedded: true
+end
