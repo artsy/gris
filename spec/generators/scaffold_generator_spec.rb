@@ -41,6 +41,12 @@ describe Gris::Generators::ScaffoldGenerator do
       expect(env_file).to match(/#{app_name}_development/)
     end
 
+    it 'creates a .Procfile file with puma ' do
+      expect(File).to exist("#{app_path}/.Procfile")
+      env_file = File.read("#{app_path}/.Procfile")
+      expect(env_file).to match(/web: bundle exec puma/)
+    end
+
     it 'creates a .env.test file with a test database name' do
       expect(File).to exist("#{app_path}/.env.test")
       env_test_file = File.read("#{app_path}/.env.test")
@@ -55,6 +61,11 @@ describe Gris::Generators::ScaffoldGenerator do
     it 'adds the pg gem in the Gemfile' do
       gemfile = File.read("#{app_path}/Gemfile")
       expect(gemfile).to match(/gem 'pg'/)
+    end
+
+    it 'adds the puma gem in the Gemfile' do
+      gemfile = File.read("#{app_path}/Gemfile")
+      expect(gemfile).to match(/gem 'puma'/)
     end
 
     it 'generates an application endpoint' do
