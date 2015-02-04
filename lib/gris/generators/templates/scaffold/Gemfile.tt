@@ -6,13 +6,13 @@ gem 'pg'
 gem 'activerecord', '~> 4.2.0', require: 'active_record'
 gem 'json'
 
-gris_gem_spec = { path: '../gris' }
-gem 'gris', gris_gem_spec
+gem 'gris'
 
 gem 'roar'
 gem 'grape-roar', '~> 0.3.0'
 gem 'grape-swagger'
 gem 'kaminari', '~> 0.16.2', require: 'kaminari/grape'
+gem 'puma'
 
 group :development, :test do
   gem 'pry'
