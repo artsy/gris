@@ -1,0 +1,11 @@
+require File.expand_path('../boot', __FILE__)
+
+module <%= app_name.classify %>
+  class Application < Gris::Application
+    # config.use_health_middleware = false
+
+    def self.instance(*)
+      super(config)
+    end
+  end
+end
