@@ -1,7 +1,7 @@
 unless defined?(Rails)
   task :environment do
     require 'erb'
-    require './app'
+    require './config/application.rb'
 
     fail 'ActiveRecord Not Found' unless Module.const_defined?(:ActiveRecord)
   end

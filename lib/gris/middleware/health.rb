@@ -1,6 +1,6 @@
 module Gris
   class Middleware
-    class AppMonitor
+    class Health
       def initialize(app)
         @app = app
       end

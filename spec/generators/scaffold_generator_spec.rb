@@ -41,9 +41,9 @@ describe Gris::Generators::ScaffoldGenerator do
       expect(env_file).to match(/#{app_name}_development/)
     end
 
-    it 'creates a .Procfile file with puma ' do
-      expect(File).to exist("#{app_path}/.Procfile")
-      env_file = File.read("#{app_path}/.Procfile")
+    it 'creates a Procfile file with puma ' do
+      expect(File).to exist("#{app_path}/Procfile")
+      env_file = File.read("#{app_path}/Procfile")
       expect(env_file).to match(/web: bundle exec puma/)
     end
 
@@ -69,11 +69,11 @@ describe Gris::Generators::ScaffoldGenerator do
     end
 
     it 'generates an application endpoint' do
-      expect(File).to exist("#{app_path}/app/apis/application_endpoint.rb")
+      expect(File).to exist("#{app_path}/app/endpoints/application_endpoint.rb")
     end
 
     context 'application_endpoint' do
-      let(:application_api_file) { File.read("#{app_path}/app/apis/application_endpoint.rb") }
+      let(:application_api_file) { File.read("#{app_path}/app/endpoints/application_endpoint.rb") }
 
       it 'the application endpoint inherits from Grape::API' do
         expect(application_api_file).to match(/class ApplicationEndpoint < Grape::API/)
@@ -103,16 +103,8 @@ describe Gris::Generators::ScaffoldGenerator do
         expect(root_presenter_file).to match(/module RootPresenter/)
       end
 
-      it 'includes Grape::Roar::Representer' do
-        expect(RootPresenter).to include(Grape::Roar::Representer)
-      end
-
-      it 'includes Roar::Hypermedia' do
-        expect(RootPresenter).to include(Roar::Hypermedia)
-      end
-
-      it 'includes Roar::JSON::HAL' do
-        expect(RootPresenter).to include(Roar::JSON::HAL)
+      it 'includes Gris::Presenter' do
+        expect(RootPresenter).to include(Gris::Presenter)
       end
     end
   end
