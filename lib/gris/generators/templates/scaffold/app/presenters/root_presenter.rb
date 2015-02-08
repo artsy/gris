@@ -1,7 +1,5 @@
 module RootPresenter
-  include Roar::JSON::HAL
-  include Roar::Hypermedia
-  include Grape::Roar::Representer
+  include Gris::Presenter
 
   link :self do |opts|
     "#{base_url(opts)}"

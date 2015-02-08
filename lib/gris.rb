@@ -11,10 +11,13 @@ require 'roar/json'
 require 'roar/json/hal'
 
 # require internal files
+require 'gris/application'
 require 'gris/deprecations'
 require 'gris/grape_extensions/crud_helpers'
+require 'gris/grape_extensions/error_helpers'
+require 'gris/grape_extensions/authentication_helpers'
 require 'gris/identity'
-require 'gris/middleware/app_monitor'
+require 'gris/middleware/health'
 require 'gris/output_formatters/paginated_presenter'
 require 'gris/output_formatters/presenter'
 require 'gris/setup'
@@ -25,13 +28,3 @@ if defined?(Rake)
   load 'tasks/routes.rake'
   load 'tasks/db.rake'
 end
-
-module Gris
-  class << self
-    def initialize
-      Gris::Deprecations.initialization_checks
-    end
-  end
-end
-
-Gris.initialize

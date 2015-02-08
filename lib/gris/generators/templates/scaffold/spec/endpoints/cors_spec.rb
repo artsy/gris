@@ -5,6 +5,7 @@ describe Application::Service do
 
   context 'CORS' do
     include_context 'with a running app'
+    include_context 'with token authorization'
     it 'supports options' do
       options '/', {},
               'HTTP_ORIGIN' => 'http://cors.example.com',

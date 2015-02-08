@@ -12,7 +12,7 @@ describe Gris::Generators::ApiGenerator do
 
   describe 'app' do
     it 'creates an endpoint class' do
-      expected_api_file = File.join(generator_tmp_directory, 'app/apis/foos_endpoint.rb')
+      expected_api_file = File.join(generator_tmp_directory, 'app/endpoints/foos_endpoint.rb')
       api_code = File.read(expected_api_file)
       expect(api_code).to match(/class FoosEndpoint/)
     end
@@ -56,7 +56,7 @@ describe Gris::Generators::ApiGenerator do
 
   describe 'spec' do
     it 'creates an api spec' do
-      expected_api_file = File.join(generator_tmp_directory, 'spec/apis/foos_endpoint_spec.rb')
+      expected_api_file = File.join(generator_tmp_directory, 'spec/endpoints/foos_endpoint_spec.rb')
       api_code = File.read(expected_api_file)
       expect(api_code).to match(/describe FoosEndpoint/)
     end
