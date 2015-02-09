@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Application::Service do
+describe <%= app_name.classify %>::Application do
   include Rack::Test::Methods
 
   context 'CORS' do

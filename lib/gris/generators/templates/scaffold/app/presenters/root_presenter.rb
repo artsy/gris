@@ -9,6 +9,8 @@ module RootPresenter
     { href: "#{base_url(opts)}/health" }
   end
 
+  # Additional endpoint links
+
   private
 
   def base_url(opts)
