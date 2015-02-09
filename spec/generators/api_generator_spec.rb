@@ -7,6 +7,12 @@ describe Gris::Generators::ApiGenerator do
   let(:api_name) { 'foo' }
 
   before do
+    endpoints_directory_path = "#{generator_tmp_directory}/app/endpoints"
+    presenters_directory_path = "#{generator_tmp_directory}/app/presenters"
+    FileUtils.mkdir_p endpoints_directory_path
+    FileUtils.mkdir_p presenters_directory_path
+    File.open("#{endpoints_directory_path}/application_endpoint.rb", 'w+') { |file| file.write("# Additional mounted endpoints\n") }
+    File.open("#{presenters_directory_path}/root_presenter.rb", 'w+') { |file| file.write("# Additional endpoint links\n") }
     Gris::CLI::Base.new.generate('api', api_name)
   end
 
@@ -51,6 +57,19 @@ describe Gris::Generators::ApiGenerator do
       presenter_file = File.join(generator_tmp_directory, 'app/presenters/foos_presenter.rb')
       require "./#{presenter_file}"
       expect(FoosPresenter).to include(Gris::PaginatedPresenter)
+    end
+
+    it 'mounts new endpoint in ApplicationEndpoint' do
+      expected_endpoint_file = File.join(generator_tmp_directory, 'app/endpoints/application_endpoint.rb')
+      endpoint_file = File.read(expected_endpoint_file)
+      expect(endpoint_file).to match(/mount FoosEndpoint/)
+    end
+
+    it 'adds links to RootPresenter' do
+      expected_root_presenter_file = File.join(generator_tmp_directory, 'app/presenters/root_presenter.rb')
+      presenter_file = File.read(expected_root_presenter_file)
+      expect(presenter_file).to match(/link :foo do |opts|/)
+      expect(presenter_file).to match(/link :foos do |opts|/)
     end
   end
 

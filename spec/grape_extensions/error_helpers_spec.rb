@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'gris/grape_extensions/error_helpers'
 
 describe Gris::ErrorHelpers do
   before do
