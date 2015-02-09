@@ -19,5 +19,6 @@ class ApplicationEndpoint < Grape::API
   get do
     present self, with: RootPresenter
   end
+
   # Additional mounted endpoints
 end

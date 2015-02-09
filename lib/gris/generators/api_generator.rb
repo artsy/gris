@@ -54,7 +54,6 @@ module Gris
           text << "      templated: true\n"
           text << "    }\n"
           text << "  end\n"
-          text << "\n"
           text
         end
       end
