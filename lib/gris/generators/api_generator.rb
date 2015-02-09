@@ -19,9 +19,17 @@ module Gris
         '.'
       end
 
+      def path_to_application_endpoint
+        "#{output_directory}/app/endpoints/application_endpoint.rb"
+      end
+
+      def path_to_root_presenter
+        "#{output_directory}/app/presenters/root_presenter.rb"
+      end
+
       def append_endpoint_to_application_endpoint
         say 'Mounting new endpoint on ApplicationEndpoint.'
-        insert_into_file './app/endpoints/application_endpoint.rb', after: "# Additional mounted endpoints\n" do
+        insert_into_file path_to_application_endpoint, after: "# Additional mounted endpoints\n" do
           text =  "  mount #{name.classify.pluralize}Endpoint\n"
           text
         end
@@ -29,7 +37,7 @@ module Gris
 
       def append_endpoint_links_to_root_presenter
         say 'Appending links to RootPresenter.'
-        insert_into_file './app/presenters/root_presenter.rb', after: "# Additional endpoint links\n" do
+        insert_into_file path_to_root_presenter, after: "# Additional endpoint links\n" do
           text =  "\n"
           text << "  link :#{name_tableize} do |opts|\n"
           text << "    {\n"
