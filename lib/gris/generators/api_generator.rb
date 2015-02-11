@@ -50,7 +50,7 @@ module Gris
           text << "  link :#{name_underscore} do |opts|\n"
           text << "    {\n"
           text << '      href: "#{base_url(opts)}/'
-          text << "#{name_tableize}{id}\",\n"
+          text << "#{name_tableize}/{id}\",\n"
           text << "      templated: true\n"
           text << "    }\n"
           text << "  end\n"
