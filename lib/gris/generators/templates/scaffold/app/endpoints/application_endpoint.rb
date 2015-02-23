@@ -1,6 +1,7 @@
 class ApplicationEndpoint < Grape::API
   format :json
   formatter :json, Grape::Formatter::Roar
+  content_type :json, 'application/hal+json'
 
   helpers do
     include Gris::AuthenticationHelpers

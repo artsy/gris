@@ -79,6 +79,10 @@ describe Gris::Generators::ScaffoldGenerator do
         expect(application_api_file).to match(/class ApplicationEndpoint < Grape::API/)
       end
 
+      it 'the application endpoint uses hal+json content_type' do
+        expect(application_api_file).to include "content_type :json, 'application/hal+json'"
+      end
+
       it 'mounts the RootPresenter' do
         expect(application_api_file).to match(/present self, with: RootPresenter/)
       end
