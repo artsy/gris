@@ -192,7 +192,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord (~> 4.2, >= 4.2.0)
   acts_as_fu (~> 0)
-  bundler (~> 1.7.10, >= 1.7.10)
+  bundler (~> 1.7.9, >= 1.7.9)
   byebug
   fakefs (~> 0.4)
   gris!
