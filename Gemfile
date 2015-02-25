@@ -2,6 +2,8 @@ source 'https://rubygems.org/'
 
 gemspec
 
+gem 'hashie_rails', git: 'https://github.com/dylanfareed/hashie_rails.git', branch: 'off-the-rails'
+
 group :development do
   gem 'byebug'
   gem 'rubocop'

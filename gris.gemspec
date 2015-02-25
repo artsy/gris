@@ -25,12 +25,13 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'logging'
   s.add_dependency 'dotenv', '~> 1.0.2', '>= 1.0.2'
-  s.add_dependency 'grape', '~> 0.10.1', '>= 0.10.1'
+  s.add_dependency 'grape', '~> 0.11.0', '>= 0.11.0'
   s.add_dependency 'grape-roar', '~> 0.3.0', '>= 0.3.0'
 
   s.add_dependency 'grape-swagger', '~> 0.9.0', '>= 0.9.0'
   s.add_dependency 'roar', '~> 1.0.0', '>= 1.0.0'
   s.add_dependency 'racksh', '~> 1.0'
+  s.add_dependency 'hashie_rails'
 
   s.add_development_dependency 'bundler', '~> 1.7.9', '>= 1.7.9'
   s.add_development_dependency 'rspec', '~> 3.1', '>= 3.1.0'
