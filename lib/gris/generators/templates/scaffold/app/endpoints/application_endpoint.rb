@@ -10,7 +10,7 @@ class ApplicationEndpoint < Grape::API
   # Adds a simple environment variable based
   # token authentication scheme to your endpoints.
   # Alternatively, this token_authentication!
-  # method can be added to inddividual endpoints.
+  # method can be added to individual endpoints.
   #
   before do
     token_authentication!
