@@ -34,7 +34,7 @@ module Gris
       end
 
       def embedded_result_with_id(id, klass)
-        embedded_results(klass).select { |r| r.id == id }.first
+        embedded_results(klass).detect { |r| r.id == id }
       end
 
       def links
