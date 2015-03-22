@@ -3,4 +3,11 @@ language: ruby
 cache: bundler
 
 rvm:
-  - ruby-2.1.5
+  - 2.1.5
+
+before_script:
+  - gem install rubocop
+
+script:
+  - "bundle exec rspec"
+  - "bundle exec rubocop"
