@@ -9,9 +9,9 @@ module Gris
       Gris::Deprecations.initialization_checks
       @filenames = ['', '.html', 'index.html', '/index.html']
       @rack_static = ::Rack::Static.new(
-          -> { [404, {}, []] },
-          root: File.expand_path('../public', __FILE__),
-          urls: ['/']
+        -> { [404, {}, []] },
+        root: File.expand_path('../public', __FILE__),
+        urls: ['/']
         )
     end
 
