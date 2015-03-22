@@ -205,7 +205,7 @@ DEPENDENCIES
   bundler (~> 1.7.9, >= 1.7.9)
   byebug
   fakefs (~> 0.4)
-  fasterer
+  fasterer (~> 0.1.8)
   gris!
   guard-rspec
   guard-rubocop
