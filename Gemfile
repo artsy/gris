@@ -9,4 +9,5 @@ group :development do
   gem 'guard-rubocop'
   gem 'rake', '~> 10.0'
   gem 'fakefs', '~> 0.4'
+  gem 'fasterer'
 end
