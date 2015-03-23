@@ -28,14 +28,14 @@ Gem::Specification.new do |s|
   s.add_dependency 'grape', '~> 0.11.0', '>= 0.11.0'
   s.add_dependency 'grape-roar', '~> 0.3.0', '>= 0.3.0'
 
-  s.add_dependency 'grape-swagger', '~> 0.9.0', '>= 0.9.0'
-  s.add_dependency 'roar', '~> 1.0.0', '>= 1.0.0'
+  s.add_dependency 'grape-swagger', '~> 0.10.0'
+  s.add_dependency 'roar', '~> 1.0.1'
   s.add_dependency 'racksh', '~> 1.0'
   s.add_dependency 'hashie-forbidden_attributes', '~> 0.1.0'
 
-  s.add_development_dependency 'bundler', '~> 1.7.9', '>= 1.7.9'
-  s.add_development_dependency 'rspec', '~> 3.1', '>= 3.1.0'
-  s.add_development_dependency 'rubocop', '~> 0.28', '>= 0.28.0'
-  s.add_development_dependency 'activerecord', '~> 4.2', '>= 4.2.0'
+  s.add_development_dependency 'bundler', '~> 1.9'
+  s.add_development_dependency 'rspec', '~> 3.2'
+  s.add_development_dependency 'rubocop', '~> 0.29'
+  s.add_development_dependency 'activerecord', '~> 4.2'
   s.add_development_dependency 'acts_as_fu', '~> 0'
 end
