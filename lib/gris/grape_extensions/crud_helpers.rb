@@ -2,7 +2,7 @@
 # raising a ForbiddenAttributesProtection exception when we mass assign
 # attributes.
 #
-require 'hashie_forbidden_attributes'
+require 'hashie-forbidden_attributes'
 
 module Gris
   module CrudHelpers
