@@ -1,9 +1,3 @@
-# We are using hashie-forbidden_attributes gem to prevent ActiveModel from
-# raising a ForbiddenAttributesProtection exception when we mass assign
-# attributes.
-#
-require 'hashie-forbidden_attributes'
-
 module Gris
   module CrudHelpers
     def create(type, options = {})

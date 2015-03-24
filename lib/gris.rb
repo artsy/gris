@@ -9,6 +9,7 @@ require 'grape-roar'
 require 'roar/representer'
 require 'roar/json'
 require 'roar/json/hal'
+require 'hashie-forbidden_attributes'
 
 # require internal files
 require 'gris/application'
