@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'racksh', '~> 1.0'
   s.add_dependency 'hashie-forbidden_attributes', '~> 0.1.0'
 
-  s.add_development_dependency 'bundler', '~> 1.9'
+  s.add_development_dependency 'bundler'
   s.add_development_dependency 'rspec', '~> 3.2'
   s.add_development_dependency 'rubocop', '~> 0.29'
   s.add_development_dependency 'activerecord', '~> 4.2'

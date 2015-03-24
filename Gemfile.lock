@@ -200,7 +200,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord (~> 4.2)
   acts_as_fu (~> 0)
-  bundler (~> 1.9)
+  bundler
   byebug
   fakefs (~> 0.4)
   fasterer (~> 0.1.8)
