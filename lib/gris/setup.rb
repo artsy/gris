@@ -1,4 +1,5 @@
 require 'active_support'
+require 'dotenv'
 
 module Gris
   class << self
