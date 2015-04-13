@@ -1,6 +1,5 @@
 #!/usr/bin/env rake
 require 'gris/setup'
-require 'dotenv'
 Gris.load_environment
 
 require File.expand_path('../config/application.rb', __FILE__)
