@@ -4,7 +4,7 @@ require 'dotenv'
 module Gris
   class << self
     def load_environment
-      Dotenv.load(Gris.env.test? ? '.env.test' : '.env')
+      Dotenv.load
     end
 
     def env
