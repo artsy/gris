@@ -4,7 +4,7 @@ end
 
 shared_context 'with token authorization' do
   before(:each) do
-    permitted_token = ENV['PERMITTED_TOKENS'].dup.gsub!(/[\[\]]/, '').split(/\s*,\s*/).first if ENV['PERMITTED_TOKENS']
+    permitted_token = ENV['PERMITTED_TOKENS'].split(',').first if ENV['PERMITTED_TOKENS']
     header 'Http-Authorization', permitted_token
   end
 end
