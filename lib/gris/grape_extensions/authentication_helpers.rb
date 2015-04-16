@@ -15,7 +15,7 @@ module Gris
     end
 
     def permitted_tokens
-      ENV['PERMITTED_TOKENS']
+      ENV['PERMITTED_TOKENS'].split(',')
     end
   end
 end

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Gris::AuthenticationHelpers do
   context 'without permitted token' do
     before(:each) do
-      stub_const 'ENV', 'PERMITTED_TOKENS' => %w(my-token another-token)
+      stub_const 'ENV', 'PERMITTED_TOKENS' => 'my-token,another-token'
       @helper = SpecApiAuthHelper.new
     end
 
@@ -23,11 +23,27 @@ describe Gris::AuthenticationHelpers do
           expect(@helper.token_authentication!).to be_nil
         end
       end
+      context 'with blank params token' do
+        it 'returns a 401 Forbidden error' do
+          allow(@helper).to receive(:params).and_return(token: '')
+          allow(@helper).to receive_message_chain(:request, :headers).and_return('Http-Authorization' => nil)
+          @helper.token_authentication!
+          expect(@helper.message).to eq(message: 'Forbidden', status: 401)
+        end
+      end
       context 'with included request header token' do
         it 'returns nil' do
           allow(@helper).to receive(:params).and_return(token: nil)
           allow(@helper).to receive_message_chain(:request, :headers).and_return('Http-Authorization' => 'my-token')
           expect(@helper.token_authentication!).to be_nil
+        end
+      end
+      context 'with blank header token' do
+        it 'returns a 401 Forbidden error' do
+          allow(@helper).to receive(:params).and_return(token: nil)
+          allow(@helper).to receive_message_chain(:request, :headers).and_return('Http-Authorization' => '')
+          @helper.token_authentication!
+          expect(@helper.message).to eq(message: 'Forbidden', status: 401)
         end
       end
     end
