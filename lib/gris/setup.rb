@@ -15,5 +15,9 @@ module Gris
     def env=(environment)
       @_env = ActiveSupport::StringInquirer.new(environment)
     end
+
+    def db_connection_details
+      YAML.load(ERB.new(File.read('./config/database.yml')).result)[Gris.env]
+    end
   end
 end

@@ -1,8 +1,6 @@
 unless defined?(Rails)
   task :environment do
-    require 'erb'
     require './config/application.rb'
-
     fail 'ActiveRecord Not Found' unless Module.const_defined?(:ActiveRecord)
   end
 
@@ -22,27 +20,19 @@ unless defined?(Rails)
 
     desc 'Create the database'
     task create: :environment do
-      db = YAML.load(ERB.new(File.read('./config/database.yml')).result)[Gris.env]
-
-      options = {}.tap do |o|
-        o[:adapter] = db['adapter']
-        o[:database] = 'postgres' if db['adapter'] == 'postgresql'
-      end
-
-      ActiveRecord::Base.establish_connection(options)
+      db = Gris.db_connection_details
+      admin_connection = db.merge(database: 'postgres',
+                                  schema_search_path: 'public')
+      ActiveRecord::Base.establish_connection(admin_connection)
       ActiveRecord::Base.connection.create_database(db['database'])
     end
 
     desc 'Delete the database'
     task drop: :environment do
-      db = YAML.load(ERB.new(File.read('./config/database.yml')).result)[Gris.env]
-
-      options = {}.tap do |o|
-        o[:adapter] = db['adapter']
-        o[:database] = 'postgres' if db['adapter'] == 'postgresql'
-      end
-
-      ActiveRecord::Base.establish_connection(options)
+      db = Gris.db_connection_details
+      admin_connection = db.merge(database: 'postgres',
+                                  schema_search_path: 'public')
+      ActiveRecord::Base.establish_connection(admin_connection)
       ActiveRecord::Base.connection.drop_database(db['database'])
     end
 
@@ -65,17 +55,13 @@ unless defined?(Rails)
       desc 'Load a schema.rb file into the database'
       task load: :environment do
         file = ENV['SCHEMA'] || 'db/schema.rb'
-        db = YAML.load(ERB.new(File.read('./config/database.yml')).result)[Gris.env]
-        ActiveRecord::Base.establish_connection(db)
+        db = Gris.db_connection_details
+        admin_connection = db.merge(database: 'postgres',
+                                    schema_search_path: 'public')
+        ActiveRecord::Base.establish_connection(admin_connection)
         ActiveRecord::Schema.verbose = true
         load(file)
       end
-    end
-
-    desc 'Load the seed data from db/seeds.rb'
-    task seed: :environment do
-      ActiveRecord::Tasks::DatabaseTasks.seed_loader = Gris::ActiveRecordSeeder.new './db/seeds.rb'
-      ActiveRecord::Tasks::DatabaseTasks.load_seed
     end
   end
 end
