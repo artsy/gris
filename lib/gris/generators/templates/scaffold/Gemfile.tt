@@ -16,6 +16,7 @@ gem 'puma'
 
 group :development, :test do
   gem 'pry'
+  gem 'hyperclient', '0.7.0'
 end
 
 group :development do
