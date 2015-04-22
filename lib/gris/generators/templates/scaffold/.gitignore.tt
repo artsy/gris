@@ -2,7 +2,8 @@
 .env
 .rspec
 .env
-!.env.test
+.env.*
+!.env.example
 !log/.keep
 log/*
 tmp/*

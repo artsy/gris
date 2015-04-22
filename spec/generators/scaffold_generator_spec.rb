@@ -35,9 +35,9 @@ describe Gris::Generators::ScaffoldGenerator do
       expect(Dir).to exist(app_path)
     end
 
-    it 'creates a .env file with with a development database name' do
-      expect(File).to exist("#{app_path}/.env")
-      env_file = File.read("#{app_path}/.env")
+    it 'creates a .env.example file with with a development database name' do
+      expect(File).to exist("#{app_path}/.env.example")
+      env_file = File.read("#{app_path}/.env.example")
       expect(env_file).to match(/#{app_name}_development/)
     end
 
@@ -47,10 +47,10 @@ describe Gris::Generators::ScaffoldGenerator do
       expect(env_file).to match(/web: bundle exec puma/)
     end
 
-    it 'creates a .env.test file with a test database name' do
-      expect(File).to exist("#{app_path}/.env.test")
-      env_test_file = File.read("#{app_path}/.env.test")
-      expect(env_test_file).to match(/#{app_name}_test/)
+    it 'creates a .env.example file with a development database name' do
+      expect(File).to exist("#{app_path}/.env.example")
+      env_test_file = File.read("#{app_path}/.env.example")
+      expect(env_test_file).to match(/#{app_name}_development/)
     end
 
     it 'selects postgresql as the default database adapter' do

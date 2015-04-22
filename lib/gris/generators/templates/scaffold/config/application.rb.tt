@@ -1,5 +1,12 @@
 require File.expand_path('../boot', __FILE__)
 
+# autoload initalizers
+Dir['./config/initializers/**/*.rb'].map { |file| require file }
+
+# autoload app
+relative_load_paths = %w(app/endpoints app/presenters app/models)
+ActiveSupport::Dependencies.autoload_paths += relative_load_paths
+
 module <%= app_name.classify %>
   class Application < Gris::Application
     # config.use_health_middleware = false
