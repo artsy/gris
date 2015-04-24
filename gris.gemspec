@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'roar', '~> 1.0.1'
   s.add_dependency 'racksh', '~> 1.0'
   s.add_dependency 'hashie-forbidden_attributes', '~> 0.1.0'
+  s.add_dependency 'chronic', '~> 0.10.0'
 
   s.add_development_dependency 'bundler'
   s.add_development_dependency 'rspec', '~> 3.2'

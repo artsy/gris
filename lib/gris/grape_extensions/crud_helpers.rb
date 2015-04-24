@@ -17,6 +17,7 @@ module Gris
 
     def permitted_params(options = {})
       options = { include_missing: false }.merge(options)
+      process_datetime_params(params) if keys_to_convert
       declared(params, options)
     end
 
