@@ -36,7 +36,7 @@ unless defined?(Rails)
       ActiveRecord::Base.connection.drop_database(db['database'])
     end
 
-    desc 'Create the test database'
+    desc 'Recreate the database, load the schema, and initialize with the seed data'
     task reset: :environment do
       Rake::Task['db:drop'].invoke
       Rake::Task['db:create'].invoke
