@@ -2,7 +2,7 @@
 
 Gris is a framework for building Rack-based hypermedia APIs using Grape, Roar and ActiveRecord.
 
-[![Build Status](https://semaphoreci.com/api/v1/projects/37371083-45b6-4c6f-a887-b631ca0fbe5c/381675/badge.png)](https://semaphoreci.com/dylanfareed/gris)
+[![Build Status](https://semaphoreci.com/api/v1/projects/aeb68b19-58b7-4015-885d-e989a3e96ca2/418227/badge.svg)](https://semaphoreci.com/artsy/gris)
 
 It is derived from/inspired by the stellar and more sophisticated [Napa framework by Bellycard Inc.](https://github.com/bellycard/napa).
 
