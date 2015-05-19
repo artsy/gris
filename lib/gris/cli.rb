@@ -11,14 +11,14 @@ module Gris
         Generators::ApiGenerator,
         'api',
         'api <api_name>',
-        'Create a Grape API, Model and Presenter'
+        'Generate a Grape API, Model and Presenter'
       )
 
       register(
         Generators::MigrationGenerator,
         'migration',
         'migration <migration_name> [field[:type][:index] field[:type][:index]]',
-        'Create a Database Migration'
+        'Generate a Database Migration'
       )
     end
   end
@@ -58,7 +58,7 @@ module Gris
         Generators::ScaffoldGenerator,
         'new',
         'new <app_name> [app_path]',
-        'Creates a scaffold for a new Gris service'
+        'Generates a scaffold for a new Gris service'
       )
 
       desc 'generate api <api_name>', 'Create a Grape API, Model and Representer'
