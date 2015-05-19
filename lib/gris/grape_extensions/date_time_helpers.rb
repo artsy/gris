@@ -15,6 +15,7 @@ module Gris
     end
 
     def process_datetime_params(params)
+      return unless keys_to_convert
       params.keys.each do |key|
         if keys_to_convert.include?(key)
           params[key] = string_to_datetime(params[key])
