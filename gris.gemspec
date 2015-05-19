@@ -4,10 +4,10 @@ require File.expand_path('../lib/gris/version', __FILE__)
 Gem::Specification.new do |s|
   s.name        = 'gris'
   s.version     = Gris::VERSION
-  s.summary     = 'A simple api microservice generator.'
+  s.summary     = 'A simple api microservice generator framework.'
   s.description = 'Gris is a generator for Grape, Roar, Hypermedia, PG API apps.'
   s.email       = 'email@dylanfareed.com'
-  s.homepage    = 'http://github.com/dylanfareed/gris/'
+  s.homepage    = 'http://github.com/artsy/gris/'
   s.authors     = ['Dylan Fareed']
   s.licenses    = 'MIT-LICENSE'
 
@@ -22,9 +22,9 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'activesupport', '~> 4.2', '>= 4.2.0'
   s.add_runtime_dependency 'rake', '~> 10.4', '>= 10.4.2'
   s.add_runtime_dependency 'git', '~> 1.2', '>= 1.2.8'
-  s.add_runtime_dependency 'dotenv', '~> 1.0.2', '>= 1.0.2'
+  s.add_runtime_dependency 'dotenv', '~> 2.0', '>= 2.0'
 
-  s.add_dependency 'logging'
+  s.add_dependency 'logging', '~> 2.0'
   s.add_dependency 'grape', '~> 0.11.0', '>= 0.11.0'
   s.add_dependency 'grape-roar', '~> 0.3.0', '>= 0.3.0'
 
