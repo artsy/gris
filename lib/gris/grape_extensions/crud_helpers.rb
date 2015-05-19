@@ -17,7 +17,7 @@ module Gris
 
     def permitted_params(options = {})
       options = { include_missing: false }.merge(options)
-      process_datetime_params(params) if keys_to_convert
+      process_datetime_params(params) if respond_to?(:process_datetime_params)
       declared(params, options)
     end
 
