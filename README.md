@@ -51,6 +51,18 @@ Commands:
 
 ---
 
+### Caching
+
+You can use caching by including this module
+
+    include Gris::CacheKey
+
+in your ActiveRecord models, and then cache inside GET requests like this
+
+    offer_event =  Gris.cache.fetch(OfferEvent.cache_key_for(id)) do
+      OfferEvent.find(id)
+    end
+
 ### The name
 
 Gris is named for [Juan Gris](https://www.artsy.net/artist/juan-gris) (but also works in the wine-based word context of Grape and Napa). Cleverness!
