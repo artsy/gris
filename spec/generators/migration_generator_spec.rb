@@ -1,6 +1,4 @@
 require 'spec_helper'
-require 'gris/generators/migration_generator'
-require 'gris/cli'
 
 describe Gris::Generators::MigrationGenerator do
   include_context 'with generator'

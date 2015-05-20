@@ -1,6 +1,4 @@
 require 'spec_helper'
-require 'gris/generators/scaffold_generator'
-require 'gris/cli'
 
 describe Gris::Generators::ScaffoldGenerator do
   let(:app_name) { 'my_test_app' }

@@ -1,6 +1,4 @@
 require 'spec_helper'
-require 'gris/generators/api_generator'
-require 'gris/cli'
 
 describe Gris::Generators::ApiGenerator do
   include_context 'with generator'

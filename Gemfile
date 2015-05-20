@@ -2,12 +2,16 @@ source 'https://rubygems.org/'
 
 gemspec
 
-group :development do
+group :development, :test do
   gem 'byebug'
+end
+
+group :development do
   gem 'rubocop'
-  gem 'guard-rspec', require: false
-  gem 'guard-rubocop'
-  gem 'rake', '~> 10.0'
-  gem 'fakefs', '~> 0.4'
-  gem 'fasterer', '~> 0.1'
+  gem 'fasterer'
+end
+
+group :test do
+  gem 'childprocess'
+  gem 'hyperclient'
 end
