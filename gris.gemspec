@@ -31,6 +31,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'racksh', '~> 1.0'
   s.add_runtime_dependency 'hashie-forbidden_attributes', '~> 0.1.0'
   s.add_runtime_dependency 'chronic', '~> 0.10.0'
+  s.add_runtime_dependency 'dalli', '~> 2.7'
 
   s.add_development_dependency 'bundler'
   s.add_development_dependency 'rspec', '~> 3.2'
