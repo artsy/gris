@@ -1,9 +1,10 @@
 ENV['RACK_ENV'] = 'test'
 
-require 'gris/setup'
-require 'gris'
-
 require 'byebug'
+require 'childprocess'
+require 'gris'
+require 'gris/cli'
+require 'rack/test'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
