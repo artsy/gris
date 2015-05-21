@@ -53,15 +53,15 @@ Commands:
 
 ### Caching
 
-You can use caching by including this module
+You can use caching by including this module in your ActiveRecord models,
 
-    include Gris::CacheKey
-
-in your ActiveRecord models, and then cache inside GET requests like this
-
-    offer_event =  Gris.cache.fetch(OfferEvent.cache_key_for(id)) do
-      OfferEvent.find(id)
+    class OfferEvent < ActiveRecord::Base
+      include Gris::CacheKey
     end
+
+and then cache inside GET requests like this
+
+    offer_event =  OfferEvent.cached_find(id)
 
 ### The name
 
