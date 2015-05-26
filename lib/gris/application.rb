@@ -17,7 +17,6 @@ module Gris
 
     def self.instance(config = {})
       @instance ||= Rack::Builder.new do
-        use ActiveRecord::ConnectionAdapters::ConnectionManagement
         use Gris::Middleware::Health unless config[:use_health_middleware] == false
         use Rack::Cors do
           allow do
