@@ -1,10 +1,8 @@
 ENV['RACK_ENV'] = 'test'
 
-require 'webmock/rspec'
-require 'rack/test'
-require 'gris/rspec_extensions/response_helpers'
-
 require File.expand_path('../../config/application', __FILE__)
+require 'gris/rspec_extensions/response_helpers'
+require 'gris/rspec_extensions/active_record_shared_connection'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -17,11 +15,10 @@ RSpec.configure do |config|
 
   config.before(:suite) do
     ActiveRecord::Migration.maintain_test_schema!
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
+    DatabaseCleaner.strategy = :truncation
   end
 
-  config.before(:each) do
+  config.before do
     DatabaseCleaner.clean
   end
 end
