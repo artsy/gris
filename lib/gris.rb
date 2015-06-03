@@ -1,6 +1,5 @@
 # require external libraries
 require 'rake'
-require 'dotenv'
 require 'yaml'
 require 'grape'
 require 'json'

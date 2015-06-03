@@ -33,22 +33,10 @@ describe Gris::Generators::ScaffoldGenerator do
       expect(Dir).to exist(app_path)
     end
 
-    it 'creates a .env.example file with with a development database name' do
-      expect(File).to exist("#{app_path}/.env.example")
-      env_file = File.read("#{app_path}/.env.example")
-      expect(env_file).to match(/#{app_name}_development/)
-    end
-
     it 'creates a Procfile file with puma ' do
       expect(File).to exist("#{app_path}/Procfile")
       env_file = File.read("#{app_path}/Procfile")
       expect(env_file).to match(/web: bundle exec puma/)
-    end
-
-    it 'creates a .env.example file with a development database name' do
-      expect(File).to exist("#{app_path}/.env.example")
-      env_test_file = File.read("#{app_path}/.env.example")
-      expect(env_test_file).to match(/#{app_name}_development/)
     end
 
     it 'selects postgresql as the default database adapter' do

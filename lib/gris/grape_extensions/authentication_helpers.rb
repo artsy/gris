@@ -15,7 +15,7 @@ module Gris
     end
 
     def permitted_tokens
-      ENV['PERMITTED_TOKENS'].split(',')
+      Gris.secrets.permitted_tokens.split(',')
     end
   end
 end

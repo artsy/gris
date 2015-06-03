@@ -3,7 +3,6 @@
 .rspec
 .env
 .env.*
-!.env.example
 !log/.keep
 log/*
 tmp/*

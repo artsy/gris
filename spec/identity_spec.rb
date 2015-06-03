@@ -33,14 +33,8 @@ describe Gris::Identity do
   end
 
   context '#name' do
-    it "returns 'api-service' if no ENV['SERVICE_NAME'] is set" do
-      ENV['SERVICE_NAME'] = nil
-      expect(Gris::Identity.name).to eq('api-service')
-    end
-
-    it "returns the ENV['SERVICE_NAME'] when specified" do
-      ENV['SERVICE_NAME'] = nil
-      ENV['SERVICE_NAME'] = 'my-service'
+    it 'returns the Gris.secrets.service_name when specified' do
+      Gris.secrets.service_name = 'my-service'
       expect(Gris::Identity.name).to eq('my-service')
     end
   end
@@ -72,14 +66,8 @@ describe Gris::Identity do
   end
 
   context '#base_url' do
-    it 'returns http://localhost:9292 by default' do
-      ENV['BASE_URL'] = nil
-      expect(Gris::Identity.base_url).to eq('http://localhost:9292')
-    end
-
-    it "returns the env['BASE_URL'] when specied" do
-      ENV['BASE_URL'] = nil
-      ENV['BASE_URL'] = 'my-base-url'
+    it 'returns the Gris.secrets.base_url when specied' do
+      Gris.secrets.base_url = 'my-base-url'
       expect(Gris::Identity.base_url).to eq('my-base-url')
     end
   end
