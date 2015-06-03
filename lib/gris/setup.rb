@@ -1,19 +1,29 @@
 require 'active_support'
-require 'dotenv'
 
 module Gris
   class << self
-    def load_environment
-      env_file = Gris.env.test? ? '.env.test' : '.env'
-      Dotenv.overload env_file
-    end
-
     def env
       @_env ||= ActiveSupport::StringInquirer.new(ENV['RACK_ENV'] || 'development')
     end
 
     def env=(environment)
       @_env = ActiveSupport::StringInquirer.new(environment)
+    end
+
+    # adapted from https://github.com/rails/rails/blob/master/railties/lib/rails/application.rb
+    # Returns secrets added to config/secrets.yml.
+    def secrets
+      @secrets ||= begin
+        secrets = ActiveSupport::OrderedOptions.new
+        yaml = 'config/secrets.yml'
+        if File.exist?(yaml)
+          require 'erb'
+          all_secrets = YAML.load(ERB.new(IO.read(yaml)).result) || {}
+          env_secrets = all_secrets[Gris.env]
+          secrets.merge!(env_secrets.symbolize_keys) if env_secrets
+        end
+        secrets
+      end
     end
 
     def db_connection_details

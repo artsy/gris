@@ -2,8 +2,6 @@ require 'thor'
 require 'gris/generators'
 require 'gris/version'
 
-Gris.load_environment if defined?(Dotenv)
-
 module Gris
   class CLI
     class Generate < Thor

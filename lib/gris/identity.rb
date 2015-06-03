@@ -13,11 +13,11 @@ module Gris
     end
 
     def self.name
-      ENV['SERVICE_NAME'] || 'api-service'
+      Gris.secrets.service_name
     end
 
     def self.base_url
-      ENV['BASE_URL'] || 'http://localhost:9292'
+      Gris.secrets.base_url
     end
 
     def self.hostname

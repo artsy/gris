@@ -3,11 +3,10 @@ shared_context 'with a running app' do
 end
 
 shared_context 'with token authorization' do
+  let(:permitted_token) { Gris.secrets.permitted_tokens }
   before(:each) do
-    permitted_token = ENV['PERMITTED_TOKENS'].split(',').first if ENV['PERMITTED_TOKENS']
     header 'Http-Authorization', permitted_token
   end
-  let(:permitted_token) { ENV['PERMITTED_TOKENS'].split(',').first }
 end
 
 shared_context 'with a running app and client' do

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Gris::AuthenticationHelpers do
   context 'without permitted token' do
     before(:each) do
-      stub_const 'ENV', 'PERMITTED_TOKENS' => 'my-token,another-token'
+      Gris.secrets.permitted_tokens = 'my-token,another-token'
       @helper = SpecApiAuthHelper.new
     end
 
