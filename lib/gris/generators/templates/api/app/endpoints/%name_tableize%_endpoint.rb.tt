@@ -1,51 +1,48 @@
 class <%= name.classify.pluralize %>Endpoint < Grape::API
   namespace :<%= name.underscore.tableize %> do
-    desc 'Get a list of <%= name.underscore.tableize %>'
+    desc 'List existing <%= name.underscore.tableize %>'
     params do
-      optional :ids, type: Array, desc: 'Array of <%= name.underscore %> ids'
       optional :page, type: Integer, default: 1, desc: 'Current page.'
       optional :size, type: Integer, default: 10, desc: 'Number of <%= name.underscore.tableize %> to return per page.'
     end
     get do
-      <%= name.underscore.tableize %> = params[:ids] ? <%= name.classify %>.where(id: params[:ids]) : <%= name.classify %>.all
+      conditions = {}
+      <%= name.underscore.tableize %> = <%= name.classify %>.where(conditions)
       present Kaminari.paginate_array(<%= name.underscore.tableize %>).page(params[:page]).per(params[:size]), with: <%= name.classify.pluralize %>Presenter
     end
 
-    desc 'Create a new <%= name.underscore %>.'
+    desc 'Create new <%= name.underscore %>.'
     params do
       requires :<%= name.underscore %>, type: Hash do
         # Use this requires block to whitelist params which
         # may be updated via mass assignment at this endpoint.
         #
-        # requires :name, type: String, default: false
-        # optional :category, type: String, default: false
+        # requires :name, type: String
+        # optional :category, type: String
       end
     end
     post do
       create <%= name.classify %>, with: <%= name.classify %>Presenter, from: permitted_params[:<%= name.underscore %>]
     end
 
-    desc 'Get an existing <%= name.underscore %>.'
+    desc 'Retrieve existing <%= name.underscore %>.'
     params do
       requires :id, desc: 'ID of the <%= name.underscore %>'
     end
-    route_param :id do
-      desc 'Get an <%= name.underscore %>'
-      get do
-        <%= name.underscore %> = <%= name.classify %>.find params[:id]
-        present <%= name.underscore %>, with: <%= name.classify %>Presenter
-      end
+    get ':id' do
+      <%= name.underscore %> = <%= name.classify %>.find params[:id]
+      present <%= name.underscore %>, with: <%= name.classify %>Presenter
     end
 
-    desc 'Update an existing <%= name.underscore %>.'
+    desc 'Update existing <%= name.underscore %>.'
     params do
       requires :id, type: String, desc: '<%= name.classify %> id.'
       requires :<%= name.underscore %>, type: Hash do
         # Use this requires block to whitelist params which
         # may be updated via mass assignment at this endpoint.
         #
-        # requires :name, type: String, default: false
-        # optional :category, type: String, default: false
+        # requires :name, type: String
+        # optional :category, type: String
       end
     end
     patch ':id' do
@@ -53,7 +50,7 @@ class <%= name.classify.pluralize %>Endpoint < Grape::API
       update <%= name.underscore %>, with: <%= name.classify %>Presenter, from: permitted_params[:<%= name.underscore %>]
     end
 
-    desc 'Delete an existing <%= name.underscore %>.'
+    desc 'Delete existing <%= name.underscore %>.'
     params do
       requires :id, type: String, desc: '<%= name.classify %> id.'
     end
