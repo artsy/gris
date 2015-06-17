@@ -181,7 +181,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord (~> 4.2)
   acts_as_fu (~> 0)
-  bundler
+  bundler (~> 1)
   byebug
   childprocess
   fasterer
