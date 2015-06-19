@@ -18,7 +18,8 @@ module Gris
         yaml = 'config/secrets.yml'
         if File.exist?(yaml)
           require 'erb'
-          all_secrets = YAML.load(ERB.new(IO.read(yaml)).result) || {}
+          # safe_load yaml, whitelist_classes = [], whitelist_symbols = [], aliases = false, filename = nil
+          all_secrets = YAML.safe_load(ERB.new(IO.read(yaml)).result, [], [], true) || {}
           env_secrets = all_secrets[Gris.env]
           secrets.merge!(env_secrets.symbolize_keys) if env_secrets
         end

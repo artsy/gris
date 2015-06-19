@@ -1,12 +1,12 @@
 PATH
   remote: .
   specs:
-    gris (0.3.3)
+    gris (0.3.4)
       activesupport (~> 4.2, >= 4.2.0)
       chronic (~> 0.10.0)
       dalli (~> 2.7)
       git (~> 1.2, >= 1.2.8)
-      grape (~> 0.11.0, >= 0.11.0)
+      grape (>= 0.11.0)
       grape-roar (~> 0.3.0, >= 0.3.0)
       grape-swagger (~> 0.10.0)
       hashie-forbidden_attributes (~> 0.1.0)
@@ -73,7 +73,7 @@ GEM
     ffi (1.9.8)
     futuroscope (0.1.11)
     git (1.2.9.1)
-    grape (0.11.0)
+    grape (0.12.0)
       activesupport
       builder
       hashie (>= 2.1.0)
@@ -121,7 +121,7 @@ GEM
     parser (2.2.2.5)
       ast (>= 1.1, < 3.0)
     powerpack (0.1.1)
-    rack (1.6.2)
+    rack (1.6.4)
     rack-accept (0.4.5)
       rack (>= 0.4)
     rack-mount (0.8.3)
