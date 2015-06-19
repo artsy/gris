@@ -4,7 +4,8 @@
 
 It makes use of [Grape](https://github.com/intridea/grape), [Roar](https://github.com/apotonick/roar), [RSpec](http://rspec.info/), [Hyperclient](https://github.com/codegram/hyperclient), and [Active Record](https://github.com/rails/rails/tree/master/activerecord) with PostgreSQL among other excellent projects. Gris is derived from/inspired by the stellar and more sophisticated [Napa framework by Bellycard Inc.](https://github.com/bellycard/napa). We stand on the shoulders of tall people.
 
-[![Build Status](https://semaphoreci.com/api/v1/projects/aeb68b19-58b7-4015-885d-e989a3e96ca2/418227/shields_badge.svg)](https://semaphoreci.com/artsy/gris)
+[![Build Status](https://semaphoreci.com/api/v1/projects/aeb68b19-58b7-4015-885d-e989a3e96ca2/418227/badge.svg)](https://semaphoreci.com/artsy-it/gris)
+
 [![Gem Version](https://badge.fury.io/rb/gris.svg)](http://badge.fury.io/rb/gris)
 [![Code Climate](https://codeclimate.com/github/artsy/gris/badges/gpa.svg)](https://codeclimate.com/github/artsy/gris)
 [![Dependency Status](https://gemnasium.com/artsy/gris.svg)](https://gemnasium.com/artsy/gris)
