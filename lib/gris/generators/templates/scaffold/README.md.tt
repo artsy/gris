@@ -14,16 +14,12 @@ Set-Up for Development
 cd your-fork-directory
 bundle
 ```
-- `DATABASE_NAME` and `PERMITTED_TOKENS` are required environment variables. Prior to executing rake tasks, running the gris console or booting the application, set up your environment by doing **one** of the following:
-  * Use [Dotenv](https://github.com/bkeepers/dotenv)—copy `.env.example` to `.env` and `.env.test` and modify it where appropriate
-  * Export the minimum required environment variables `DATABASE_NAME` and `PERMITTED_TOKENS`
 - Set up the database
 ```
-DATABASE_NAME= PERMITTED_TOKENS= bundle exec rake db:create
-DATABASE_NAME= PERMITTED_TOKENS= bundle exec rake db:migrate
+RACK_ENV=test bundle exec rake db:create
+RACK_ENV=test bundle exec rake db:migrate
 ```
 - Verify that [Rubocop](https://github.com/bbatsov/rubocop) and specs pass.
 ```
-DATABASE_NAME= PERMITTED_TOKENS= bundle exec rake
+bundle exec rake
 ```
-

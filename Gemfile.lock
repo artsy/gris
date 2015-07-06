@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gris (0.3.4)
+    gris (0.3.5)
       activesupport (~> 4.2, >= 4.2.0)
       chronic (~> 0.10.0)
       dalli (~> 2.7)
@@ -10,6 +10,7 @@ PATH
       grape-roar (~> 0.3.0, >= 0.3.0)
       grape-swagger (~> 0.10.0)
       hashie-forbidden_attributes (~> 0.1.0)
+      indefinite_article (~> 0.2)
       logging (~> 2.0)
       racksh (~> 1.0)
       rake (~> 10.4, >= 10.4.2)
@@ -105,6 +106,8 @@ GEM
       uri_template (~> 0.5)
     i18n (0.7.0)
     ice_nine (0.11.1)
+    indefinite_article (0.2.4)
+      activesupport
     json (1.8.3)
     little-plugger (1.1.3)
     logging (2.0.0)
@@ -112,7 +115,7 @@ GEM
       multi_json (~> 1.10)
     mini_portile (0.6.2)
     minitest (5.7.0)
-    multi_json (1.11.1)
+    multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     net-http-digest_auth (1.4)
@@ -133,7 +136,7 @@ GEM
       rack-test (>= 0.5)
     rainbow (2.0.0)
     rake (10.4.2)
-    representable (2.2.2)
+    representable (2.2.3)
       multi_json
       nokogiri
       uber (~> 0.0.7)
