@@ -40,26 +40,28 @@ describe <%= name.classify.pluralize %>Endpoint do
     end
     let(:<%= name.underscore %>1) { Fabricate(:<%= name.underscore %>, attributes: <%= name.underscore %>_details) }
 
-    it 'creates a <%= name.underscore %>' do
+    it 'creates <%= name.underscore.with_indefinite_article %>' do
       <%= name.underscore %> = client.<%= name.tableize %>._post(<%= name.underscore %>: <%= name.underscore %>_details)
       expect(<%= name.underscore %>.replace_me).to eq <%= name.underscore %>_details[:replace_me]
     end
 
-    it 'returns a <%= name.underscore %>' do
+    it 'returns <%= name.underscore.with_indefinite_article %>' do
       <%= name.underscore %> = client.<%= name.underscore %>(id: <%= name.underscore %>1.id)
       expect(<%= name.underscore %>.id).to eq <%= name.underscore %>1.id
       expect(<%= name.underscore %>.replace_me).to eq <%= name.underscore %>_details[:replace_me]
     end
 
-    it 'updates a <%= name.underscore %>' do
+    it 'updates <%= name.underscore.with_indefinite_article %>' do
       <%= name.underscore %> = client.<%= name.underscore %>(id: <%= name.underscore %>1.id)._patch(<%= name.underscore %>: { replace_me: 'braque is a talented artist' })
       expect(<%= name.underscore %>.id).to eq <%= name.underscore %>1.id
       expect(<%= name.underscore %>.replace_me).to eq 'braque is a talented artist'
     end
 
-    it 'deletes a <%= name.underscore %>' do
-      <%= name.underscore %> = client.<%= name.underscore %>(id: <%= name.underscore %>1.id)._delete
-      expect(<%= name.underscore %>.id).to eq <%= name.underscore %>1.id
+    it 'deletes <%= name.underscore.with_indefinite_article %>' do
+      <%= name.underscore %> = Fabricate(:<%= name.underscore %>, attributes: <%= name.underscore %>_details)
+      expect do
+        client.<%= name.underscore %>(id: <%= name.underscore %>.id)._delete
+      end.to change { <%= name.classify %>.count }.by(-1)
     end
   end
 end
