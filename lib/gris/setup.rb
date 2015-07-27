@@ -28,7 +28,11 @@ module Gris
     end
 
     def db_connection_details
-      YAML.load(ERB.new(File.read('./config/database.yml')).result)[Gris.env]
+      if ENV['DATABASE_URL']
+        ActiveRecord::ConnectionAdapters::ConnectionSpecification::ConnectionUrlResolver.new(ENV['DATABASE_URL']).to_hash
+      else
+        YAML.load(ERB.new(File.read('./config/database.yml')).result)[Gris.env]
+      end
     end
 
     def cache

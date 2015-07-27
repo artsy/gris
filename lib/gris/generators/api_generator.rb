@@ -1,5 +1,6 @@
 require 'thor'
 require 'active_support/all'
+require 'indefinite_article'
 
 module Gris
   module Generators

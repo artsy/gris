@@ -9,11 +9,10 @@ require 'roar/representer'
 require 'roar/json'
 require 'roar/json/hal'
 require 'hashie-forbidden_attributes'
-require 'indefinite_article'
 
 # require internal files
 require 'gris/application'
-require 'gris/cache_key'
+require 'gris/caching'
 require 'gris/deprecations'
 require 'gris/grape_extensions/crud_helpers'
 require 'gris/grape_extensions/error_helpers'

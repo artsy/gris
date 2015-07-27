@@ -57,12 +57,20 @@ Commands:
 You can use caching by including this module in your ActiveRecord models,
 
     class OfferEvent < ActiveRecord::Base
-      include Gris::CacheKey
+      include Gris::Caching
     end
 
 and then cache inside GET requests like this
 
     offer_event =  OfferEvent.cached_find(id)
+
+To expire the cache for an object, call
+
+    OfferEvent.expire_cache_for(id)
+
+or, if you have an instance, use
+
+    offer_event.expire_cache
 
 ### The name
 
