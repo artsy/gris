@@ -24,7 +24,15 @@ unless defined?(Rails)
       admin_connection = db.merge(database: 'postgres',
                                   schema_search_path: 'public')
       ActiveRecord::Base.establish_connection(admin_connection)
-      ActiveRecord::Base.connection.create_database(db['database'])
+      begin
+        ActiveRecord::Base.connection.create_database(db['database'])
+      rescue ActiveRecord::StatementInvalid => e
+        if e.message =~ /DuplicateDatabase/
+          $stderr.puts "#{admin_connection['database']} already exists"
+        else
+          raise
+        end
+      end
     end
 
     desc 'Delete the database'
