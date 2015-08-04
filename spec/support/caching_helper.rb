@@ -1,8 +1,8 @@
 require 'active_model'
 
-class CacheKeyHelper
+class CachingHelper
   include ActiveModel::Model
-  include Gris::CacheKey
+  include Gris::Caching
 
   attr_accessor :id
 
@@ -12,11 +12,11 @@ class CacheKeyHelper
 
   class << self
     def find(id)
-      CacheKeyHelper.new(id: id)
+      CachingHelper.new(id: id)
     end
 
     def model_name
-      CacheKeyHelper
+      CachingHelper
     end
 
     def cache_key

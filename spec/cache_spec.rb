@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'gris/identity'
 
 describe 'Gris.cache' do
   before(:each) do
