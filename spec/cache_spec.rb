@@ -1,13 +1,14 @@
 require 'spec_helper'
 
 describe 'Gris.cache' do
-  before(:each) do
-    @cache = Gris.cache
+  let(:cache) { Gris.cache }
+
+  it 'returns nil by default' do
+    expect(cache.read('x')).to be_nil
   end
 
-  it 'caches things' do
-    expect(@cache.read('x')).to be_nil
-    @cache.write('x', 'abc')
-    expect(@cache.read('x')).to eq('abc')
+  it 'permits writing to and retrieving from cache' do
+    cache.write('x', 'abc')
+    expect(cache.read('x')).to eq('abc')
   end
 end
