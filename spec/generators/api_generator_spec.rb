@@ -77,6 +77,8 @@ describe Gris::Generators::ApiGenerator do
       api_code = File.read(expected_api_file)
       expect(api_code).to match(/describe ArticlesEndpoint/)
       expect(api_code).to match(/returns an article/)
+      expect(api_code).to match(/it_should_behave_like 'an endpoint with token_authentication!'/)
+      expect(api_code).to match %r{'get', '/articles/1'}
     end
 
     it 'creates a fabricator' do
