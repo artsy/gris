@@ -9,7 +9,7 @@ shared_context 'with token authorization' do
   end
 end
 
-shared_context 'with a running app and client' do
+shared_context 'with a running app and token authorized client' do
   include_context 'with a running app'
   include_context 'with token authorization'
 
