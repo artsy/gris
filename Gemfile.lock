@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gris (0.3.9)
+    gris (0.4.0)
       activesupport (~> 4.2, >= 4.2.0)
       chronic (~> 0.10.0)
       dalli (~> 2.7)
@@ -113,14 +113,11 @@ GEM
     logging (2.0.0)
       little-plugger (~> 1.1)
       multi_json (~> 1.10)
-    mini_portile (0.6.2)
     minitest (5.7.0)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     net-http-digest_auth (1.4)
-    nokogiri (1.6.6.2)
-      mini_portile (~> 0.6.0)
     parser (2.2.2.5)
       ast (>= 1.1, < 3.0)
     powerpack (0.1.1)
@@ -136,9 +133,7 @@ GEM
       rack-test (>= 0.5)
     rainbow (2.0.0)
     rake (10.4.2)
-    representable (2.2.3)
-      multi_json
-      nokogiri
+    representable (2.3.0)
       uber (~> 0.0.7)
     roar (1.0.1)
       representable (>= 2.0.1, <= 3.0.0)

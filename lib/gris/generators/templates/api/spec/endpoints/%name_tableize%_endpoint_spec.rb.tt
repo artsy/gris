@@ -2,66 +2,78 @@ require 'spec_helper'
 
 describe <%= name.classify.pluralize %>Endpoint do
   include Rack::Test::Methods
-  include_context 'with a running app and client'
+  context 'with a running app' do
+    include_context 'with a running app'
 
-  context '<%= name.tableize %>' do
-    before(:each) do
-      20.times do
-        Fabricate(:<%= name.underscore %>)
+    it_should_behave_like 'an endpoint with token_authentication!', [
+      ['get', '/<%= name.tableize %>'], ['post', '/<%= name.tableize %>'],
+      ['get', '/<%= name.tableize %>/1'], ['patch', '/<%= name.tableize %>/2'],
+      ['delete', '/<%= name.tableize %>/3']
+    ]
+  end
+
+  context 'with a running app and token authorized client' do
+    include_context 'with a running app and token authorized client'
+
+    context '<%= name.tableize %>' do
+      before(:each) do
+        20.times do
+          Fabricate(:<%= name.underscore %>)
+        end
+      end
+
+      it 'returns 10 <%= name.tableize %> by default' do
+        expect(client.<%= name.tableize %>.count).to eq 10
+      end
+
+      it 'returns 2 <%= name.tableize %>' do
+        expect(client.<%= name.tableize %>(size: 2).count).to eq 2
+      end
+
+      it 'returns pagination' do
+        response = client.<%= name.tableize %>(size: 2, page: 2)
+        expect(response._links.next._url).to eq 'http://example.org/<%= name.tableize %>?page=3&size=2'
+        expect(response._links.prev._url).to eq 'http://example.org/<%= name.tableize %>?page=1&size=2'
+        expect(response._links.self._url).to eq 'http://example.org/<%= name.tableize %>?page=2&size=2'
+      end
+
+      it 'returns all unique ids' do
+        <%= name.tableize %> = client.<%= name.tableize %>
+        expect(<%= name.tableize %>.map(&:id).uniq.count).to eq 10
       end
     end
 
-    it 'returns 10 <%= name.tableize %> by default' do
-      expect(client.<%= name.tableize %>.count).to eq 10
-    end
+    context '<%= name.underscore %>' do
+      let(:<%= name.underscore %>_details) do
+        {
+          replace_me: 'braque is not a talented artist'
+        }
+      end
+      let(:<%= name.underscore %>1) { Fabricate(:<%= name.underscore %>, attributes: <%= name.underscore %>_details) }
 
-    it 'returns 2 <%= name.tableize %>' do
-      expect(client.<%= name.tableize %>(size: 2).count).to eq 2
-    end
+      it 'creates <%= name.underscore.with_indefinite_article %>' do
+        <%= name.underscore %> = client.<%= name.tableize %>._post(<%= name.underscore %>: <%= name.underscore %>_details)
+        expect(<%= name.underscore %>.replace_me).to eq <%= name.underscore %>_details[:replace_me]
+      end
 
-    it 'returns pagination' do
-      response = client.<%= name.tableize %>(size: 2, page: 2)
-      expect(response._links.next._url).to eq 'http://example.org/<%= name.tableize %>?page=3&size=2'
-      expect(response._links.prev._url).to eq 'http://example.org/<%= name.tableize %>?page=1&size=2'
-      expect(response._links.self._url).to eq 'http://example.org/<%= name.tableize %>?page=2&size=2'
-    end
+      it 'returns <%= name.underscore.with_indefinite_article %>' do
+        <%= name.underscore %> = client.<%= name.underscore %>(id: <%= name.underscore %>1.id)
+        expect(<%= name.underscore %>.id).to eq <%= name.underscore %>1.id
+        expect(<%= name.underscore %>.replace_me).to eq <%= name.underscore %>_details[:replace_me]
+      end
 
-    it 'returns all unique ids' do
-      <%= name.tableize %> = client.<%= name.tableize %>
-      expect(<%= name.tableize %>.map(&:id).uniq.count).to eq 10
-    end
-  end
+      it 'updates <%= name.underscore.with_indefinite_article %>' do
+        <%= name.underscore %> = client.<%= name.underscore %>(id: <%= name.underscore %>1.id)._patch(<%= name.underscore %>: { replace_me: 'braque is a talented artist' })
+        expect(<%= name.underscore %>.id).to eq <%= name.underscore %>1.id
+        expect(<%= name.underscore %>.replace_me).to eq 'braque is a talented artist'
+      end
 
-  context '<%= name.underscore %>' do
-    let(:<%= name.underscore %>_details) do
-      {
-        replace_me: 'braque is not a talented artist'
-      }
-    end
-    let(:<%= name.underscore %>1) { Fabricate(:<%= name.underscore %>, attributes: <%= name.underscore %>_details) }
-
-    it 'creates <%= name.underscore.with_indefinite_article %>' do
-      <%= name.underscore %> = client.<%= name.tableize %>._post(<%= name.underscore %>: <%= name.underscore %>_details)
-      expect(<%= name.underscore %>.replace_me).to eq <%= name.underscore %>_details[:replace_me]
-    end
-
-    it 'returns <%= name.underscore.with_indefinite_article %>' do
-      <%= name.underscore %> = client.<%= name.underscore %>(id: <%= name.underscore %>1.id)
-      expect(<%= name.underscore %>.id).to eq <%= name.underscore %>1.id
-      expect(<%= name.underscore %>.replace_me).to eq <%= name.underscore %>_details[:replace_me]
-    end
-
-    it 'updates <%= name.underscore.with_indefinite_article %>' do
-      <%= name.underscore %> = client.<%= name.underscore %>(id: <%= name.underscore %>1.id)._patch(<%= name.underscore %>: { replace_me: 'braque is a talented artist' })
-      expect(<%= name.underscore %>.id).to eq <%= name.underscore %>1.id
-      expect(<%= name.underscore %>.replace_me).to eq 'braque is a talented artist'
-    end
-
-    it 'deletes <%= name.underscore.with_indefinite_article %>' do
-      <%= name.underscore %> = Fabricate(:<%= name.underscore %>, attributes: <%= name.underscore %>_details)
-      expect do
-        client.<%= name.underscore %>(id: <%= name.underscore %>.id)._delete
-      end.to change { <%= name.classify %>.count }.by(-1)
+      it 'deletes <%= name.underscore.with_indefinite_article %>' do
+        <%= name.underscore %> = Fabricate(:<%= name.underscore %>, attributes: <%= name.underscore %>_details)
+        expect do
+          client.<%= name.underscore %>(id: <%= name.underscore %>.id)._delete
+        end.to change { <%= name.classify %>.count }.by(-1)
+      end
     end
   end
 end

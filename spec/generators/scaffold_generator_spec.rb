@@ -97,5 +97,9 @@ describe Gris::Generators::ScaffoldGenerator do
         expect(RootPresenter).to include(Gris::Presenter)
       end
     end
+
+    it 'generates a token authentication spec helper endpoint' do
+      expect(File).to exist("#{app_path}/spec/support/shared_authentication_spec_helper.rb")
+    end
   end
 end
