@@ -7,8 +7,7 @@ class <%= name.classify.pluralize %>Endpoint < Grape::API
     end
     get do
       conditions = {}
-      <%= name.underscore.tableize %> = <%= name.classify %>.where(conditions)
-      present Kaminari.paginate_array(<%= name.underscore.tableize %>).page(params[:page]).per(params[:size]), with: <%= name.classify.pluralize %>Presenter
+      paginate <%= name.classify %>, conditions: conditions, with: <%= name.classify.pluralize %>Presenter
     end
 
     desc 'Create new <%= name.underscore %>.'
