@@ -9,16 +9,16 @@ module Gris
         last_response.body
       end
 
-      def parsed_response
-        Hashie::Mash.new(JSON.parse(last_response.body))
+      def parsed_response_body
+        Hashie::Mash.new JSON.parse(response_body)
       end
 
       def result
-        parsed_response
+        parsed_response_body
       end
 
       def embedded_results(klass)
-        parsed_response[:_embedded][klass.name.tableize.to_sym]
+        parsed_response_body[:_embedded][klass.name.tableize.to_sym]
       end
 
       def embedded_results_count(klass)
@@ -38,7 +38,7 @@ module Gris
       end
 
       def links
-        parsed_response['_links']
+        parsed_response_body['_links']
       end
 
       def link_to_self
