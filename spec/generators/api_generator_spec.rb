@@ -21,6 +21,12 @@ describe Gris::Generators::ApiGenerator do
       expect(api_code).to match(/class ArticlesEndpoint/)
     end
 
+    it 'endpoint class uses GrisPaginator' do
+      expected_api_file = File.join(generator_tmp_directory, 'app/endpoints/articles_endpoint.rb')
+      api_code = File.read(expected_api_file)
+      expect(api_code).to match(/paginate Article, conditions: conditions, with: ArticlesPresenter/)
+    end
+
     it 'creates a model class' do
       expected_model_file = File.join(generator_tmp_directory, 'app/models/article.rb')
       model_code = File.read(expected_model_file)

@@ -54,6 +54,11 @@ describe Gris::Generators::ScaffoldGenerator do
       expect(gemfile).to match(/gem 'puma'/)
     end
 
+    it 'adds the gris_paginator gem in the Gemfile' do
+      gemfile = File.read("#{app_path}/Gemfile")
+      expect(gemfile).to match(/gem 'gris_paginator'/)
+    end
+
     it 'generates an application endpoint' do
       expect(File).to exist("#{app_path}/app/endpoints/application_endpoint.rb")
     end
