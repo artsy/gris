@@ -25,11 +25,10 @@ module Gris
 
     def call(env)
       response = ApplicationEndpoint.call(env)
-      # Render error pages or return API response
       case response[0]
       when 404, 500
         body = { code: response[0], message: response[2] }.to_json
-        [response[0], response[1], body]
+        [response[0], response[1], [body]]
       else
         response
       end
