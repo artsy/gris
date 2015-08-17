@@ -14,14 +14,14 @@ describe 'token authentication' do
   end
 
   context 'with correct token query params' do
-    it 'returns the root presenter' do
+    xit 'returns the root presenter' do
       client.params['token'] = 'replace-me'
       expect(client._links.self._url).to eq client_url
     end
   end
 
   context 'with correct Http-Authorization headers' do
-    it 'returns the root presenter' do
+    xit 'returns the root presenter' do
       client.headers['Http-Authorization'] = 'replace-me'
       expect(client._links.self._url).to eq client_url
     end

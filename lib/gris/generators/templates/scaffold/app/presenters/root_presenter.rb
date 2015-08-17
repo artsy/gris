@@ -1,20 +1,10 @@
 module RootPresenter
-  include Gris::Presenter
+  include Gris::RootPresenter
 
-  link :self do |opts|
-    "#{base_url(opts)}"
-  end
-
-  link :health do |opts|
-    { href: "#{base_url(opts)}/health" }
+  link :self do
+    Gris::Identity.base_url
   end
 
   # Additional endpoint links
-
-  private
-
-  def base_url(opts)
-    request = Grape::Request.new(opts[:env])
-    request.base_url
-  end
+  endpoint_link :health
 end
