@@ -9,6 +9,13 @@ module Gris
         include Roar::JSON::HAL
         include Roar::Hypermedia
         include Grape::Roar::Representer
+
+        private
+
+        def request_url(opts)
+          request = Grape::Request.new(opts[:env])
+          "#{request.base_url}#{opts[:env]['PATH_INFO']}"
+        end
       end
     end
   end

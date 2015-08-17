@@ -40,21 +40,7 @@ module Gris
         say 'Appending links to RootPresenter.'
         insert_into_file path_to_root_presenter, after: "# Additional endpoint links\n" do
           text =  "\n"
-          text << "  link :#{name_tableize} do |opts|\n"
-          text << "    {\n"
-          text << '      href: "#{base_url(opts)}/'
-          text << "#{name_tableize}{?page,size}\",\n"
-          text << "      templated: true\n"
-          text << "    }\n"
-          text << "  end\n"
-          text << "\n"
-          text << "  link :#{name_underscore} do |opts|\n"
-          text << "    {\n"
-          text << '      href: "#{base_url(opts)}/'
-          text << "#{name_tableize}/{id}\",\n"
-          text << "      templated: true\n"
-          text << "    }\n"
-          text << "  end\n"
+          text << "  resource_links :#{name_underscore}\n"
           text
         end
       end

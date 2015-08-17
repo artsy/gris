@@ -72,8 +72,7 @@ describe Gris::Generators::ApiGenerator do
     it 'adds links to RootPresenter' do
       expected_root_presenter_file = File.join(generator_tmp_directory, 'app/presenters/root_presenter.rb')
       presenter_file = File.read(expected_root_presenter_file)
-      expect(presenter_file).to match(/link :article do |opts|/)
-      expect(presenter_file).to match(/link :articles do |opts|/)
+      expect(presenter_file).to match(/resource_links :article/)
     end
   end
 

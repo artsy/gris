@@ -16,6 +16,7 @@ shared_context 'with a generated app' do
   end
 
   def prepare_app
+    use_local_gris
     Bundler.with_clean_env do
       project = ChildProcess.build('bundle', 'install')
       project.io.inherit!
@@ -29,6 +30,14 @@ shared_context 'with a generated app' do
         project.stop
       end
     end
+  end
+
+  def use_local_gris
+    IO.write(
+      "#{app_name}/Gemfile", File.open("#{app_name}/Gemfile") do |f|
+        f.read.gsub(/gem 'gris'/, "gem 'gris', path: '../'")
+      end
+    )
   end
 
   def start_app
