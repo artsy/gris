@@ -14,14 +14,11 @@ module Gris
     # Returns secrets added to config/secrets.yml.
     def secrets
       @secrets ||= begin
-        secrets = ActiveSupport::OrderedOptions.new
+        secrets = Hashie::Mash.new
         yaml = 'config/secrets.yml'
-        if File.exist?(yaml)
-          require 'erb'
-          # safe_load yaml, whitelist_classes = [], whitelist_symbols = [], aliases = false, filename = nil
-          all_secrets = YAML.safe_load(ERB.new(IO.read(yaml)).result, [], [], true) || {}
-          env_secrets = all_secrets[Gris.env]
-          secrets.merge!(env_secrets.symbolize_keys) if env_secrets
+        if File.exist? yaml
+          env_secrets = Hashie::Mash.load(yaml)[Gris.env]
+          secrets.merge!(env_secrets) if env_secrets
         end
         secrets
       end
