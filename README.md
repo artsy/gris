@@ -34,6 +34,13 @@ $ bundle install
 
 ---
 
+### Quickstart Demo(s)
+
+You can find example pull requests providing walkthroughs of new app set up here:
+[https://github.com/artsy/gris-demo/pulls](https://github.com/artsy/gris-demo/pulls)
+
+---
+
 ### Usage
 
 ##### CLI & Generators
@@ -74,4 +81,6 @@ or, if you have an instance, use
 
 ### The name
 
-Gris is named for [Juan Gris](https://www.artsy.net/artist/juan-gris) (but also works in the wine-based word context of Grape and Napa). Cleverness!
+Gris is named for the Cubist painter [Juan Gris](https://www.artsy.net/artist/juan-gris).
+
+![juan-gris-bottles-and-bowl-1911](https://cloud.githubusercontent.com/assets/197336/9348124/5ef5531c-4600-11e5-8318-4858076d7c6d.jpg)
