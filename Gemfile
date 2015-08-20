@@ -14,4 +14,5 @@ end
 group :test do
   gem 'childprocess'
   gem 'hyperclient'
+  gem 'fakefs'
 end

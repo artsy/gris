@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe Gris::AuthenticationHelpers do
+  include_context 'with secrets from config/secrets.yml'
   context 'without permitted token' do
     before(:each) do
-      Gris.secrets.permitted_tokens = 'my-token,another-token'
       @helper = SpecApiAuthHelper.new
     end
 
