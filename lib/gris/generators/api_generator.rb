@@ -31,7 +31,7 @@ module Gris
       def append_endpoint_to_application_endpoint
         say 'Mounting new endpoint on ApplicationEndpoint.'
         insert_into_file path_to_application_endpoint, after: "# Additional mounted endpoints\n" do
-          text =  "  mount #{name.classify.pluralize}Endpoint\n"
+          text = "  mount #{name.classify.pluralize}Endpoint\n"
           text
         end
       end

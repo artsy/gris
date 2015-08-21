@@ -34,7 +34,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'indefinite_article', '~> 0.2'
 
   s.add_development_dependency 'bundler', '~> 1'
-  s.add_development_dependency 'rspec', '~> 3.2'
+  s.add_development_dependency 'rspec', '~> 3.3'
   s.add_development_dependency 'rubocop', '~> 0.29'
   s.add_development_dependency 'activerecord', '~> 4.2'
   s.add_development_dependency 'acts_as_fu', '~> 0'
