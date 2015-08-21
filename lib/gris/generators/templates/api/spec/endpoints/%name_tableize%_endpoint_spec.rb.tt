@@ -2,15 +2,6 @@ require 'spec_helper'
 
 describe <%= name.classify.pluralize %>Endpoint do
   include Rack::Test::Methods
-  context 'with a running app' do
-    include_context 'with a running app'
-
-    it_should_behave_like 'an endpoint with token_authentication!', [
-      ['get', '/<%= name.tableize %>'], ['post', '/<%= name.tableize %>'],
-      ['get', '/<%= name.tableize %>/1'], ['patch', '/<%= name.tableize %>/2'],
-      ['delete', '/<%= name.tableize %>/3']
-    ]
-  end
 
   context 'with a running app and token authorized client' do
     include_context 'with a running app and token authorized client'
