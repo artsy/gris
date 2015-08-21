@@ -24,7 +24,11 @@ module Gris
 
         private
 
-        # replace the page parameter in the query string
+        def request_url(opts)
+          request = Grape::Request.new(opts[:env])
+          "#{request.base_url}#{opts[:env]['PATH_INFO']}"
+        end
+
         def query_string_for_page(page, opts)
           qs = Rack::Utils.parse_nested_query(opts[:env]['QUERY_STRING'])
           qs['page'] = page
