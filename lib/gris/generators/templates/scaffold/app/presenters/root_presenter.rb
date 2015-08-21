@@ -1,5 +1,5 @@
 module RootPresenter
-  include Gris::RootPresenter
+  include Gris::Presenter
 
   link :self do
     Gris::Identity.base_url
