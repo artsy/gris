@@ -98,8 +98,8 @@ describe Gris::Generators::ScaffoldGenerator do
         expect(root_presenter_file).to match(/module RootPresenter/)
       end
 
-      it 'includes Gris::RootPresenter' do
-        expect(RootPresenter).to include(Gris::RootPresenter)
+      it 'includes Gris::Presenter' do
+        expect(RootPresenter).to include(Gris::Presenter)
       end
 
       it 'includes link to self' do
