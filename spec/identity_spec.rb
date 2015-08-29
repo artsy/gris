@@ -13,21 +13,33 @@ describe Gris::Identity do
     it 'includes name' do
       expect(Gris::Identity.health[:name]).to eq Gris::Identity.name
     end
+
     it 'includes base_url' do
       expect(Gris::Identity.health[:base_url]).to eq Gris::Identity.base_url
     end
+
     it 'includes hostname' do
       expect(Gris::Identity.health[:hostname]).to eq Gris::Identity.hostname
     end
+
+    it 'includes database_version' do
+      stub_const 'ActiveRecord::Migrator', Class.new
+      allow(ActiveRecord::Migrator).to receive(:current_version).and_return('awww-yeah')
+      expect(Gris::Identity.health[:database_version]).to eq 'awww-yeah'
+    end
+
     it 'includes revision' do
       expect(Gris::Identity.health[:revision]).to eq Gris::Identity.revision
     end
+
     it 'includes pid' do
       expect(Gris::Identity.health[:pid]).to eq Gris::Identity.pid
     end
+
     it 'includes parent_pid' do
       expect(Gris::Identity.health[:parent_pid]).to eq Gris::Identity.parent_pid
     end
+
     it 'includes platform' do
       expect(Gris::Identity.health[:platform]).to eq Gris::Identity.platform
     end

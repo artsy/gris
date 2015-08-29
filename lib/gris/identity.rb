@@ -6,6 +6,7 @@ module Gris
         base_url: base_url,
         hostname: hostname,
         revision: revision,
+        database_version: database_version,
         pid: pid,
         parent_pid: parent_pid,
         platform: platform
@@ -26,6 +27,10 @@ module Gris
 
     def self.revision
       @revision ||= `git rev-parse HEAD`.strip
+    end
+
+    def self.database_version
+      ActiveRecord::Migrator.current_version if defined? ActiveRecord
     end
 
     def self.pid
