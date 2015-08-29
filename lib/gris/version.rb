@@ -1,5 +1,5 @@
 module Gris
-  VERSION = '0.4.9'
+  VERSION = '0.5.0'
 
   class Version
     class << self

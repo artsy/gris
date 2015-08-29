@@ -5,11 +5,6 @@ module Gris
     include ActiveSupport::Configurable
     config_accessor :use_health_middleware
 
-    def initialize
-      Gris::Deprecations.initialization_checks
-      @filenames = ['', '.html', 'index.html', '/index.html']
-    end
-
     def self.instance(config = {})
       @instance ||= Rack::Builder.new do
         use Gris::Middleware::Health unless config[:use_health_middleware] == false

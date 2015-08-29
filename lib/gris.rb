@@ -13,7 +13,6 @@ require 'hashie-forbidden_attributes'
 # require internal files
 require 'gris/application'
 require 'gris/caching'
-require 'gris/deprecations'
 require 'gris/grape_extensions/crud_helpers'
 require 'gris/grape_extensions/date_time_helpers'
 require 'gris/grape_extensions/error_helpers'
