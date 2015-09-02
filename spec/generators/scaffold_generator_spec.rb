@@ -59,6 +59,21 @@ describe Gris::Generators::ScaffoldGenerator do
       expect(gemfile).to match(/gem 'gris_paginator'/)
     end
 
+    it 'generates a config/application.rb file' do
+      expect(File).to exist("#{app_path}/config/application.rb")
+    end
+
+    context 'config/application.rb' do
+      let(:config_application_file) { File.read("#{app_path}/config/application.rb") }
+
+      it 'adds directories in /app to ActiveSupport::Dependencies.autoload_paths' do
+        expect(config_application_file).to include "relative_load_paths = Dir.glob 'app/**/*/'"
+        expect(config_application_file).to include(
+          'ActiveSupport::Dependencies.autoload_paths += relative_load_paths'
+        )
+      end
+    end
+
     it 'generates an application endpoint' do
       expect(File).to exist("#{app_path}/app/endpoints/application_endpoint.rb")
     end
