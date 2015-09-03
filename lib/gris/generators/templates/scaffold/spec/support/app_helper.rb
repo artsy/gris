@@ -2,7 +2,7 @@ shared_context 'with a running app' do
   let(:app) { Rack::Builder.parse_file('config.ru').first }
 end
 
-shared_context 'with a running app and token authorized client' do
+shared_context 'with a running app and client' do
   include_context 'with a running app'
 
   let(:client) do

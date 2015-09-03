@@ -3,8 +3,8 @@ require 'spec_helper'
 describe <%= name.classify.pluralize %>Endpoint do
   include Rack::Test::Methods
 
-  context 'with a running app and token authorized client' do
-    include_context 'with a running app and token authorized client'
+  context 'with a running app and client' do
+    include_context 'with a running app and client'
 
     context '<%= name.tableize %>' do
       before(:each) do
