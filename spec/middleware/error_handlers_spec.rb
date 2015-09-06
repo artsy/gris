@@ -2,12 +2,18 @@ require 'spec_helper'
 
 describe Gris::Middleware::ErrorHandlers do
   include Rack::Test::Methods
-
-  subject { Class.new(Grape::API) }
-  def app
-    subject
-  end
   describe 'errors' do
+    subject { Class.new(Grape::API) }
+
+    let(:app) { subject }
+
+    let(:fake_active_record) do
+      module ActiveRecord
+        class RecordNotFound < StandardError
+        end
+      end
+    end
+
     before do
       subject.format :json
       subject.use Gris::Middleware::ErrorHandlers
@@ -49,6 +55,7 @@ describe Gris::Middleware::ErrorHandlers do
     end
 
     it 'returns a formatted message for ActiveRecord::RecordNotFound' do
+      fake_active_record
       get '/activerecord_error'
       expect(response_code).to eq 404
       expect(parsed_response_body['status']).to eq 404

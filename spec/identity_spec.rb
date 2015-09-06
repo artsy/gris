@@ -23,6 +23,8 @@ describe Gris::Identity do
     end
 
     it 'includes database_version' do
+      stub_const 'ActiveRecord::Migrator', Class.new
+      allow(ActiveRecord::Migrator).to receive(:current_version).and_return('awww-yeah')
       expect(Gris::Identity.health[:database_version]).to eq 'awww-yeah'
     end
 
