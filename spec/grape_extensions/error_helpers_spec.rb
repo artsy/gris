@@ -4,15 +4,12 @@ describe Gris::ErrorHelpers do
   before do
     @helper = SpecApiErrorHelper.new
   end
-  context 'error with text' do
-    it 'does not wrap a grape error without text' do
-      @helper.error!('error', 400)
-      expect(@helper.message).to eq(message: 'error', status: 400)
-      expect(@helper.thrown).to eq(:error)
-    end
-    it 'wraps a grape error with text' do
-      @helper.error!('error', 400, 'text')
-      expect(@helper.message).to eq(message: { error: 'error', text: 'text' }, status: 400)
+
+  context 'gris_error!' do
+    it 'returns a correctly formatted error message' do
+      @helper.gris_error! 'error', 400
+      expect(@helper.message)
+        .to eq(message: { message: 'error', status: 400 }, status: 400)
       expect(@helper.thrown).to eq(:error)
     end
   end
