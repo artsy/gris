@@ -4,10 +4,13 @@ module Gris
   class Application
     include ActiveSupport::Configurable
     config_accessor :use_health_middleware
+    config_accessor :use_error_handlers_middleware
 
     def self.instance(config = {})
       @instance ||= Rack::Builder.new do
         use Gris::Middleware::Health unless config[:use_health_middleware] == false
+        use Gris::Middleware::ErrorHandlers unless config[:use_error_handlers_middleware] == false
+
         use Rack::Cors do
           allow do
             origins '*'
@@ -19,14 +22,7 @@ module Gris
     end
 
     def call(env)
-      response = ApplicationEndpoint.call(env)
-      case response[0]
-      when 404, 500
-        body = { code: response[0], message: response[2] }.to_json
-        [response[0], response[1], [body]]
-      else
-        response
-      end
+      ApplicationEndpoint.call(env)
     end
   end
 end

@@ -72,6 +72,10 @@ describe Gris::Generators::ScaffoldGenerator do
           'ActiveSupport::Dependencies.autoload_paths += relative_load_paths'
         )
       end
+      it 'includes optional middleware configs' do
+        expect(config_application_file).to include('config.use_error_handlers_middleware = true')
+        expect(config_application_file).to include('config.use_health_middleware = true')
+      end
     end
 
     it 'generates an application endpoint' do
