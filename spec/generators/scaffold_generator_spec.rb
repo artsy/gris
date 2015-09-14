@@ -93,6 +93,10 @@ describe Gris::Generators::ScaffoldGenerator do
         expect(application_api_file).to include "content_type :json, 'application/hal+json'"
       end
 
+      it 'the application endpoint enables cascading' do
+        expect(application_api_file).to include 'cascade true'
+      end
+
       it 'mounts the RootPresenter' do
         expect(application_api_file).to match(/present self, with: RootPresenter/)
       end

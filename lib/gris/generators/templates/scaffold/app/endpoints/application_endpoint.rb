@@ -2,6 +2,7 @@ class ApplicationEndpoint < Grape::API
   format :json
   formatter :json, Grape::Formatter::Roar
   content_type :json, 'application/hal+json'
+  cascade true
 
   desc 'Get the Root API Endpoint'
   get do
