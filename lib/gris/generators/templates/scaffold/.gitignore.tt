@@ -1,7 +1,6 @@
 .DS_Store
 .env
 .rspec
-.env
 .env.*
 !log/.keep
 log/*
