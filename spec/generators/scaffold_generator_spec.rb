@@ -44,9 +44,9 @@ describe Gris::Generators::ScaffoldGenerator do
       expect(database_config_file).to match(/adapter: postgresql/)
     end
 
-    it 'adds the pg gem in the Gemfile' do
+    it 'adds ruby 2.2.3 to Gemfile' do
       gemfile = File.read("#{app_path}/Gemfile")
-      expect(gemfile).to match(/gem 'pg'/)
+      expect(gemfile).to match(/ruby '2.2.3'/)
     end
 
     it 'adds the puma gem in the Gemfile' do
