@@ -93,7 +93,7 @@ describe Gris::Generators::ApiGenerator do
     it 'creates a model spec' do
       expected_model_file = File.join(generator_tmp_directory, 'spec/models/article_spec.rb')
       model_code = File.read(expected_model_file)
-      expect(model_code).to match(/describe Article/)
+      expect(model_code).to match(/describe Article, type: :model do/)
     end
   end
 end
