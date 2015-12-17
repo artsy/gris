@@ -1,6 +1,7 @@
 unless defined?(Rails)
   desc 'display all routes for Grape'
   task routes: :environment do
+    require './config/application.rb'
     ApplicationEndpoint.routes.each do |api|
       method = api.route_method.ljust(10)
       path = api.route_path.ljust(40)
