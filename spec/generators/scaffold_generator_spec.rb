@@ -44,6 +44,11 @@ describe Gris::Generators::ScaffoldGenerator do
       expect(database_config_file).to match(/adapter: postgresql/)
     end
 
+    it 'generates a db/seeds.rb file' do
+      seed_file = File.read("#{app_path}/db/seeds.rb")
+      expect(seed_file).to match(/all the record creation needed to seed the database/)
+    end
+
     it 'adds ruby 2.2.3 to Gemfile' do
       gemfile = File.read("#{app_path}/Gemfile")
       expect(gemfile).to match(/ruby '2.2.3'/)
