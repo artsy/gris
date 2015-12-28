@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gris (0.5.9)
+    gris (0.6.0)
       activesupport (~> 4.2, >= 4.2.0)
       chronic (~> 0.10.0)
       dalli (~> 2.7)
@@ -189,4 +189,4 @@ DEPENDENCIES
   rubocop
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
