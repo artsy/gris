@@ -49,9 +49,9 @@ describe Gris::Generators::ScaffoldGenerator do
       expect(seed_file).to match(/all the record creation needed to seed the database/)
     end
 
-    it 'adds ruby 2.2.4 to Gemfile' do
+    it 'adds ruby 2.3.0 to Gemfile' do
       gemfile = File.read("#{app_path}/Gemfile")
-      expect(gemfile).to match(/ruby '2.2.4'/)
+      expect(gemfile).to match(/ruby '2.3.0'/)
     end
 
     it 'adds the puma gem in the Gemfile' do
