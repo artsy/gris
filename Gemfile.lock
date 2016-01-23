@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gris (0.6.0)
+    gris (0.6.1)
       activesupport (~> 4.2, >= 4.2.0)
       chronic (~> 0.10.0)
       dalli (~> 2.7)
@@ -131,7 +131,7 @@ GEM
       rack (>= 1.0)
       rack-test (>= 0.5)
     rainbow (2.0.0)
-    rake (10.4.2)
+    rake (10.5.0)
     representable (2.3.0)
       uber (~> 0.0.7)
     roar (1.0.4)

@@ -15,10 +15,13 @@ module Gris
         end
       rescue RuntimeError => e
         error = { status: 500, message: e.message }
-        error_response(error.to_json, 500)
+        error_response error.to_json, 500
       rescue ::ActiveRecord::RecordNotFound => e
         error = { status: 404, message: e.message }
-        error_response(error.to_json, 404)
+        error_response error.to_json, 404
+      rescue ::ActiveRecord::RecordInvalid => e
+        error = { status: 409, message: e.message }
+        error_response error.to_json, 409
       end
 
       private

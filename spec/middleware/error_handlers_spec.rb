@@ -7,9 +7,16 @@ describe Gris::Middleware::ErrorHandlers do
 
     let(:app) { subject }
 
-    let(:fake_active_record) do
+    let(:fake_active_record_record_not_found) do
       module ActiveRecord
         class RecordNotFound < StandardError
+        end
+      end
+    end
+
+    let(:fake_active_record_record_invalid) do
+      module ActiveRecord
+        class RecordInvalid < StandardError
         end
       end
     end
@@ -30,8 +37,12 @@ describe Gris::Middleware::ErrorHandlers do
         error! 'Forbidden', 401
       end
 
-      subject.get :activerecord_error do
+      subject.get :record_not_found do
         fail ActiveRecord::RecordNotFound
+      end
+
+      subject.get :record_invalid do
+        fail ActiveRecord::RecordInvalid
       end
     end
 
@@ -55,11 +66,19 @@ describe Gris::Middleware::ErrorHandlers do
     end
 
     it 'returns a formatted message for ActiveRecord::RecordNotFound' do
-      fake_active_record
-      get '/activerecord_error'
+      fake_active_record_record_not_found
+      get '/record_not_found'
       expect(response_code).to eq 404
       expect(parsed_response_body['status']).to eq 404
       expect(parsed_response_body['message']).to eq 'ActiveRecord::RecordNotFound'
+    end
+
+    it 'returns a formatted message for ActiveRecord::RecordNotFound' do
+      fake_active_record_record_invalid
+      get '/record_invalid'
+      expect(response_code).to eq 409
+      expect(parsed_response_body['status']).to eq 409
+      expect(parsed_response_body['message']).to eq 'ActiveRecord::RecordInvalid'
     end
 
     it 'returns a formatted message when an exception is raised' do
