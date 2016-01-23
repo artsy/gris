@@ -22,6 +22,7 @@ require 'gris/middleware/error_handlers'
 require 'gris/output_formatters/paginated_presenter'
 require 'gris/output_formatters/presenter'
 require 'gris/output_formatters/presenter_link_helpers'
+require 'gris/seed_loader'
 require 'gris/setup'
 require 'gris/version'
 
