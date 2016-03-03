@@ -40,11 +40,8 @@ Gris.cache.instance_eval do
     super(key, options)
 
   rescue ArgumentError => ex
-    if rescue_and_require && %r{^undefined class\/module (.+?)$} =~ ex.message
-      self.class.const_missing(Regexp.last_match(1))
-      fetch(key, options, false)
-    else
-      raise ex
-    end
+    raise ex unless rescue_and_require && %r{^undefined class\/module (.+?)$} =~ ex.message
+    self.class.const_missing(Regexp.last_match(1))
+    fetch(key, options, false)
   end
 end

@@ -81,8 +81,8 @@ module Gris
     # directly ported from
     # https://github.com/rails/rails/blob/76883f92374c6395f13c16628e1d87d40b6d2399/railties/lib/rails/generators/generated_attribute.rb
     class GeneratedAttribute # :nodoc:
-      INDEX_OPTIONS = %w(index uniq)
-      UNIQ_INDEX_OPTIONS = %w(uniq)
+      INDEX_OPTIONS = %w(index uniq).freeze
+      UNIQ_INDEX_OPTIONS = %w(uniq).freeze
 
       attr_accessor :name, :type
       attr_reader :attr_options
@@ -95,7 +95,10 @@ module Gris
           # if user provided "name:index" instead of "name:string:index"
           # type should be set blank so GeneratedAttribute's constructor
           # could set it to :string
-          has_index, type = type, nil if INDEX_OPTIONS.include?(type)
+          if INDEX_OPTIONS.include?(type)
+            has_index = type
+            type = nil
+          end
 
           type, attr_options = *parse_type_and_options(type)
           type = type.to_sym if type

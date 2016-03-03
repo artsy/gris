@@ -1,5 +1,5 @@
 module Gris
-  VERSION = '0.6.1'
+  VERSION = '0.6.2'.freeze
 
   class Version
     class << self
@@ -16,7 +16,7 @@ module Gris
       end
 
       def next_level(level)
-        fail 'Unidentified Level' unless [:major, :minor, :patch].include?(level)
+        raise 'Unidentified Level' unless [:major, :minor, :patch].include?(level)
         parts = Gris::VERSION.split('.').map(&:to_i)
         if level == :major
           parts[0] += 1
