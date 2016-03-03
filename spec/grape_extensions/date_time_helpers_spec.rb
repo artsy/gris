@@ -9,13 +9,13 @@ describe Gris::DateTimeHelpers do
   end
 
   it 'parses a date string' do
-    MY_TIME = '2011-01-02 17:00:23 UTC'
+    MY_TIME = '2011-01-02 17:00:23 UTC'.freeze
     actual = @helper.string_to_datetime(MY_TIME)
     expect(actual.to_s).to eq(MY_TIME)
   end
 
   it 'converts seconds since epoch' do
-    SECONDS = '1429823204'
+    SECONDS = '1429823204'.freeze
     actual = @helper.string_to_datetime(SECONDS)
     expect(actual).to eq(Time.at(SECONDS.to_i))
   end

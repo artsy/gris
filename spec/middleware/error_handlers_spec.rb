@@ -26,7 +26,7 @@ describe Gris::Middleware::ErrorHandlers do
       subject.use Gris::Middleware::ErrorHandlers
 
       subject.get :generic_error do
-        fail 'api error'
+        raise 'api error'
       end
 
       subject.get :gris_error do
@@ -38,11 +38,11 @@ describe Gris::Middleware::ErrorHandlers do
       end
 
       subject.get :record_not_found do
-        fail ActiveRecord::RecordNotFound
+        raise ActiveRecord::RecordNotFound
       end
 
       subject.get :record_invalid do
-        fail ActiveRecord::RecordInvalid
+        raise ActiveRecord::RecordInvalid
       end
     end
 
