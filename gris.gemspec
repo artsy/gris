@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'thor', '~> 0.19', '>= 0.19.1'
   s.add_runtime_dependency 'activesupport', '~> 4.2', '>= 4.2.0'
-  s.add_runtime_dependency 'rake', '~> 10.4', '>= 10.4.2'
+  s.add_runtime_dependency 'rake'
   s.add_runtime_dependency 'git', '~> 1.2', '>= 1.2.8'
   s.add_runtime_dependency 'logging', '~> 2.0'
   s.add_runtime_dependency 'grape', '>= 0.11.0'
