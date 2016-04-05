@@ -49,7 +49,7 @@ describe Gris::Middleware::ErrorHandlers do
     it 'retuns a Not Found error for missing routes' do
       get '/bogus'
       expect(response_code).to eq 404
-      expect(response_body).to eq 'Not Found'
+      expect(response_body).to eq '404 Not Found'
     end
 
     it 'returns a formatted message for gris_error!' do
