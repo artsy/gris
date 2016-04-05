@@ -1,5 +1,5 @@
 module Gris
-  VERSION = '0.6.2'.freeze
+  VERSION = '0.6.3'.freeze
 
   class Version
     class << self
