@@ -9,6 +9,6 @@ describe 'application error response' do
     response = JSON.parse request.body
     expect(request.status).to eq 404
     expect(response['status']).to eq 404
-    expect(response['message']).to eq ['Not Found']
+    expect(response['message']).to eq ['404 Not Found']
   end
 end
