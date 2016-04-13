@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'rake'
   s.add_runtime_dependency 'git', '~> 1.2', '>= 1.2.8'
   s.add_runtime_dependency 'logging', '~> 2.0'
-  s.add_runtime_dependency 'grape', '>= 0.11.0', '< 0.16'
+  s.add_runtime_dependency 'grape', '>= 0.11.0'
   s.add_runtime_dependency 'grape-roar', '~> 0.3.0', '>= 0.3.0'
   s.add_runtime_dependency 'grape-swagger', '~> 0.10.0'
   s.add_runtime_dependency 'roar', '~> 1.0.1'
