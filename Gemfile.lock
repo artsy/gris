@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gris (0.6.6)
+    gris (0.6.7)
       activesupport (~> 4.2, >= 4.2.0)
       chronic (~> 0.10.0)
       dalli (~> 2.7)
@@ -112,7 +112,7 @@ GEM
       little-plugger (~> 1.1)
       multi_json (~> 1.10)
     minitest (5.8.4)
-    multi_json (1.11.2)
+    multi_json (1.11.3)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
     mustermann19 (0.4.3)
