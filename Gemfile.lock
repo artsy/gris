@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gris (0.6.7)
+    gris (0.6.8)
       activesupport (~> 4.2, >= 4.2.0)
       chronic (~> 0.10.0)
       dalli (~> 2.7)
