@@ -29,8 +29,6 @@ module Gris
           end
         end
 
-        private
-
         def self.format_template_options(template_options = [])
           return unless template_options.any?
           "{?#{template_options.join(',')}}"
