@@ -8,14 +8,13 @@ unless defined?(Rails)
         method      = api.request_method.ljust(10)
         path        = api.path.ljust(40)
         description = api.description
-        puts "#{version} #{method} #{path} # #{description}"
       else
         version     = api.route_version.to_s.ljust(20)
         method      = api.route_method.ljust(10)
         path        = api.route_path.ljust(40)
         description = api.route_description
-        puts "#{version} #{method} #{path} # #{description}"
       end
+      puts "#{version} #{method} #{path} # #{description}"
     end
   end
 end
