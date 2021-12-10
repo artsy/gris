@@ -13,7 +13,7 @@ class <%= name.classify.pluralize %>Endpoint < Grape::API
     desc 'Create new <%= name.underscore %>.'
     params do
       requires :<%= name.underscore %>, type: Hash do
-        # Use this requires block to whitelist params which
+        # Use this requires block to allowlist params which
         # may be updated via mass assignment at this endpoint.
         #
         # requires :name, type: String
@@ -37,7 +37,7 @@ class <%= name.classify.pluralize %>Endpoint < Grape::API
     params do
       requires :id, type: String, desc: '<%= name.classify %> id.'
       requires :<%= name.underscore %>, type: Hash do
-        # Use this requires block to whitelist params which
+        # Use this requires block to allowlist params which
         # may be updated via mass assignment at this endpoint.
         #
         # requires :name, type: String
