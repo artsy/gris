@@ -2,7 +2,7 @@
 
 [Gris](https://github.com/artsy/gris) is a framework for building opinionated Rack-based hypermedia APIs. Gris aims to provide useful generators, helpers and middleware common to API microservices. Note that Gris is in development and that the ground may shift.
 
-It makes use of [Grape](https://github.com/intridea/grape), [Roar](https://github.com/apotonick/roar), [RSpec](http://rspec.info/), [Hyperclient](https://github.com/codegram/hyperclient), and [Active Record](https://github.com/rails/rails/tree/master/activerecord) with PostgreSQL among other excellent projects. Gris is derived from/inspired by the stellar and more sophisticated [Napa framework by Bellycard Inc.](https://github.com/bellycard/napa). We stand on the shoulders of tall people.
+It makes use of [Grape](https://github.com/intridea/grape), [Roar](https://github.com/apotonick/roar), [RSpec](http://rspec.info/), [Hyperclient](https://github.com/codegram/hyperclient), and [Active Record](https://github.com/rails/rails/tree/main/activerecord) with PostgreSQL among other excellent projects. Gris is derived from/inspired by the stellar and more sophisticated [Napa framework by Bellycard Inc.](https://github.com/bellycard/napa). We stand on the shoulders of tall people.
 
 [![Build Status](https://semaphoreci.com/api/v1/projects/aeb68b19-58b7-4015-885d-e989a3e96ca2/418227/badge.svg)](https://semaphoreci.com/artsy-it/gris)
 

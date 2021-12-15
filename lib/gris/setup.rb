@@ -10,7 +10,7 @@ module Gris
       @_env = ActiveSupport::StringInquirer.new(environment)
     end
 
-    # adapted from https://github.com/rails/rails/blob/master/railties/lib/rails/application.rb
+    # adapted from https://github.com/rails/rails/blob/main/railties/lib/rails/application.rb
     # Returns secrets added to config/secrets.yml.
     def secrets
       @secrets ||= begin
