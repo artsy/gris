@@ -50,6 +50,7 @@ GEM
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     colorize (0.8.1)
+    concurrent-ruby (1.1.9)
     dalli (2.7.6)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
@@ -102,7 +103,8 @@ GEM
       futuroscope
       net-http-digest_auth
       uri_template
-    i18n (0.7.0)
+    i18n (0.9.5)
+      concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     indefinite_article (0.2.4)
       activesupport
